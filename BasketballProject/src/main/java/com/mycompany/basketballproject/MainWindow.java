@@ -78,19 +78,9 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         spgName = new javax.swing.JTextField();
         spg = new javax.swing.JTextField();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -254,71 +244,39 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Season Stat Leaders", jPanel1);
 
-        jLabel13.setText("ALL-TIME LEADERS");
+        jLabel13.setText("jLabel13");
 
-        jLabel14.setText("Total Points");
-
-        jLabel15.setText("Total Assists");
-
-        jLabel16.setText("Total Rebounds");
-
-        jLabel17.setText("Total Blocks");
-
-        jLabel18.setText("Total Steals");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2))
-                .addGap(557, 557, 557))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel13)
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(684, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jLabel13)
+                .addContainerGap(331, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("tab1", jPanel2);
+        jTabbedPane1.addTab("All Time Leaders", jPanel3);
 
-        jTabbedPane1.addTab("All-Time Stat Leaders", jTabbedPane2);
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 769, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 421, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Prediction", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -344,18 +302,18 @@ public class MainWindow extends javax.swing.JFrame {
         if (selectedItem == null) {
             return;
         }
-        
+
         int selectedYear = Integer.parseInt(seasonYears.getItemAt(seasonYears.getSelectedIndex()).substring(0,4));
         System.out.println(selectedYear);
 
-//        try{
-//            playerData = new LoadPlayers();
-//        }
-//        catch (IOException ex){
-//            System.out.println("Can't read file");
-//        }
-//        System.out.println(playerData == null);
-        
+        //        try{
+            //            playerData = new LoadPlayers();
+            //        }
+        //        catch (IOException ex){
+            //            System.out.println("Can't read file");
+            //        }
+        //        System.out.println(playerData == null);
+
         for(YearlyStats x: playerData.allYearlyStats){
             if(x.getYearPlayed() == selectedYear){
                 x.setHighestReboundsPlayer();
@@ -368,8 +326,7 @@ public class MainWindow extends javax.swing.JFrame {
                 x.setHighestRPGPlayer();
                 x.setHighestBPGPlayer();
                 x.setHighestSPGPlayer();
-                
-                
+
                 totalPoint.setText(Integer.toString(x.getHighestPointsPlayer().getTotalPointsScored()));
                 totalPointName.setText(x.getHighestPointsPlayer().getPlayerName());
                 totalRebound.setText(Integer.toString(x.getHighestReboundsPlayer().getTotalReboundsMade()));
@@ -390,8 +347,7 @@ public class MainWindow extends javax.swing.JFrame {
                 bpgName.setText(x.getHighestBPGPlayer().getPlayerName());
                 spg.setText(Double.toString(x.getHighestSPGPlayer().getSteals()));
                 spgName.setText(x.getHighestSPGPlayer().getPlayerName());
-                
-                
+
             }
         }
     }//GEN-LAST:event_seasonYearsActionPerformed
@@ -442,11 +398,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -456,14 +407,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField ppg;
     private javax.swing.JTextField ppgName;
     private javax.swing.JTextField rpg;
