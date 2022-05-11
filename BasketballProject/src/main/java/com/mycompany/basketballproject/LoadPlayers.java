@@ -24,12 +24,15 @@ public class LoadPlayers {
         loadPlayers();
     }
     // /Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
-    String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
+    String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
+    //String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
     public final void loadPlayers() throws FileNotFoundException, IOException {
+        int startIndexForSubstring = 45; // 53 for avi
+        
         BufferedReader br = new BufferedReader(new FileReader(statsFile));  
         String line = null;  
         while ((line = br.readLine()) != null) {
-            int fileYear = Integer.parseInt(line.substring(53, 57));
+            int fileYear = Integer.parseInt(line.substring(startIndexForSubstring, startIndexForSubstring+4)); 
 //            System.out.println("The year of file is " + fileYear);
             csvRead(line, fileYear);
 //            System.out.println("Processed file" + line);
