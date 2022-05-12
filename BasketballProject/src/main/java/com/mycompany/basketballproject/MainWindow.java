@@ -6,6 +6,8 @@
 package com.mycompany.basketballproject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,6 +34,7 @@ public class MainWindow extends javax.swing.JFrame {
         
          initComponents();
          loadSeasonYears();
+         printTeamNames();
     }
 
     /**
@@ -78,6 +81,8 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         spgName = new javax.swing.JTextField();
         spg = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        teamNames = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -105,7 +110,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Select Year");
+        jLabel8.setText("Select Team");
 
         jLabel9.setText("Total Blocks");
 
@@ -115,21 +120,23 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel12.setText("SPG Leader");
 
+        jLabel14.setText("Select Year");
+
+        teamNames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        teamNames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teamNamesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addGap(17, 17, 17)
-                        .addComponent(seasonYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -149,7 +156,14 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(totalPointName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(totalAssistName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(totalBlockName)
-                            .addComponent(totalStealName, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
+                            .addComponent(totalStealName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel14)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(totalPoint, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
@@ -157,19 +171,14 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(totalRebound)
                             .addComponent(totalBlock)
                             .addComponent(totalSteal))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(seasonYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(19, 19, 19)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ppgName, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                                    .addComponent(apgName)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -178,17 +187,32 @@ public class MainWindow extends javax.swing.JFrame {
                                     .addComponent(jLabel12))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(rpgName)
+                                    .addComponent(rpgName, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                                     .addComponent(bpgName)
-                                    .addComponent(spgName, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ppg, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                    .addComponent(rpg)
-                    .addComponent(apg, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bpg)
-                    .addComponent(spg))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(spgName)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(apgName, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 54, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ppg, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                            .addComponent(rpg)
+                            .addComponent(apg, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bpg)
+                            .addComponent(spg))
+                        .addContainerGap(53, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(47, 47, 47)
+                                .addComponent(teamNames, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(ppgName, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(57, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +221,9 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(seasonYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel14)
+                    .addComponent(teamNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -239,7 +265,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(spgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Season Stat Leaders", jPanel1);
@@ -253,7 +279,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel13)
-                .addContainerGap(684, Short.MAX_VALUE))
+                .addContainerGap(746, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,7 +295,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 769, Short.MAX_VALUE)
+            .addGap(0, 831, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,8 +309,8 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 552, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 852, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 490, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,53 +330,23 @@ public class MainWindow extends javax.swing.JFrame {
         }
 
         int selectedYear = Integer.parseInt(seasonYears.getItemAt(seasonYears.getSelectedIndex()).substring(0,4));
-        System.out.println(selectedYear);
 
-        //        try{
-            //            playerData = new LoadPlayers();
-            //        }
-        //        catch (IOException ex){
-            //            System.out.println("Can't read file");
-            //        }
-        //        System.out.println(playerData == null);
+        loadTeamNames(selectedYear);
+        setValuesForSeasonLeaders(selectedYear);
 
-        for(YearlyStats x: playerData.allYearlyStats){
-            if(x.getYearPlayed() == selectedYear){
-                x.setHighestReboundsPlayer();
-                x.setHighestPointsPlayer();
-                x.setHighestAssistsPlayer();
-                x.setHighestBlocksPlayer();
-                x.setHighestStealsPlayer();
-                x.setHighestPPGPlayer();
-                x.setHighestAPGPlayer();
-                x.setHighestRPGPlayer();
-                x.setHighestBPGPlayer();
-                x.setHighestSPGPlayer();
-
-                totalPoint.setText(Integer.toString(x.getHighestPointsPlayer().getTotalPointsScored()));
-                totalPointName.setText(x.getHighestPointsPlayer().getPlayerName());
-                totalRebound.setText(Integer.toString(x.getHighestReboundsPlayer().getTotalReboundsMade()));
-                totalReboundName.setText(x.getHighestReboundsPlayer().getPlayerName());
-                totalAssist.setText(Integer.toString(x.getHighestAssistsPlayer().getTotalAssistsMade()));
-                totalAssistName.setText(x.getHighestAssistsPlayer().getPlayerName());
-                totalBlock.setText(Integer.toString(x.getHighestBlocksPlayer().getTotalBlocksMade()));
-                totalBlockName.setText(x.getHighestBlocksPlayer().getPlayerName());
-                totalSteal.setText(Integer.toString(x.getHighestStealsPlayer().getTotalStealsMade()));
-                totalStealName.setText(x.getHighestStealsPlayer().getPlayerName());
-                ppg.setText(Double.toString(x.getHighestPPGPlayer().getPoints()));
-                ppgName.setText(x.getHighestPPGPlayer().getPlayerName());
-                rpg.setText(Double.toString(x.getHighestRPGPlayer().getTotalRebounds()));
-                rpgName.setText(x.getHighestRPGPlayer().getPlayerName());
-                apg.setText(Double.toString(x.getHighestAPGPlayer().getAssists()));
-                apgName.setText(x.getHighestAPGPlayer().getPlayerName());
-                bpg.setText(Double.toString(x.getHighestBPGPlayer().getBlocks()));
-                bpgName.setText(x.getHighestBPGPlayer().getPlayerName());
-                spg.setText(Double.toString(x.getHighestSPGPlayer().getSteals()));
-                spgName.setText(x.getHighestSPGPlayer().getPlayerName());
-
-            }
-        }
     }//GEN-LAST:event_seasonYearsActionPerformed
+
+    private void teamNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamNamesActionPerformed
+        // TODO add your handling code here:
+        String selectedItem = (String) teamNames.getSelectedItem();
+        if (selectedItem == null) {
+            return;
+        }
+        int selectedYear = Integer.parseInt(seasonYears.getItemAt(seasonYears.getSelectedIndex()).substring(0,4));
+        if (selectedItem.equals("All Teams")){
+            setValuesForSeasonLeaders(selectedYear);
+        }
+    }//GEN-LAST:event_teamNamesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,6 +394,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -417,6 +414,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> seasonYears;
     private javax.swing.JTextField spg;
     private javax.swing.JTextField spgName;
+    private javax.swing.JComboBox<String> teamNames;
     private javax.swing.JTextField totalAssist;
     private javax.swing.JTextField totalAssistName;
     private javax.swing.JTextField totalBlock;
@@ -433,6 +431,75 @@ public class MainWindow extends javax.swing.JFrame {
         seasonYears.removeAllItems();
         for(int i = 1980; i <= 2021; i++){
             seasonYears.addItem(Integer.toString(i) + "-" + Integer.toString(i+1));
+        }
+    }
+    private void loadTeamNames(int selectedYear) {
+        teamNames.removeAllItems();
+        teamNames.addItem("All Teams");
+        String selectedItem = (String) seasonYears.getSelectedItem();
+        if (selectedItem == null) {
+            return;
+        }
+        
+        ArrayList<String> tempTeamNames = new ArrayList<>();
+      //  int selectedYear = Integer.parseInt(seasonYears.getItemAt(seasonYears.getSelectedIndex()).substring(0,4));
+        for (TeamInfo x: playerData.allTeamsInfo){
+            if (x.yearsPlayed.contains(selectedYear)){
+                //teamNames.addItem(x.getTeamName());
+                tempTeamNames.add(x.getTeamName());
+                
+            }
+        }
+        Collections.sort(tempTeamNames);
+        for (String z : tempTeamNames){
+            teamNames.addItem(z);
+        }
+        
+    }
+    
+    private void printTeamNames() {
+        for(TeamInfo x : playerData.allTeamsInfo){
+            System.out.println(x.getTeamAcronym() + " " + x.getTeamName() + " " + x.getYearsPlayed());
+        }
+        System.out.println("Total Teams " + playerData.teamSet.size());
+    }
+    
+    private void setValuesForSeasonLeaders(int selectedYear){
+        for(YearlyStats x: playerData.allYearlyStats){
+            if(x.getYearPlayed() == selectedYear){
+                x.setHighestReboundsPlayer();
+                x.setHighestPointsPlayer();
+                x.setHighestAssistsPlayer();
+                x.setHighestBlocksPlayer();
+                x.setHighestStealsPlayer();
+                x.setHighestPPGPlayer();
+                x.setHighestAPGPlayer();
+                x.setHighestRPGPlayer();
+                x.setHighestBPGPlayer();
+                x.setHighestSPGPlayer();
+
+                totalPoint.setText(Integer.toString(x.getHighestPointsPlayer().getTotalPointsScored()));
+                totalPointName.setText(x.getHighestPointsPlayer().getPlayerName());
+                totalRebound.setText(Integer.toString(x.getHighestReboundsPlayer().getTotalReboundsMade()));
+                totalReboundName.setText(x.getHighestReboundsPlayer().getPlayerName());
+                totalAssist.setText(Integer.toString(x.getHighestAssistsPlayer().getTotalAssistsMade()));
+                totalAssistName.setText(x.getHighestAssistsPlayer().getPlayerName());
+                totalBlock.setText(Integer.toString(x.getHighestBlocksPlayer().getTotalBlocksMade()));
+                totalBlockName.setText(x.getHighestBlocksPlayer().getPlayerName());
+                totalSteal.setText(Integer.toString(x.getHighestStealsPlayer().getTotalStealsMade()));
+                totalStealName.setText(x.getHighestStealsPlayer().getPlayerName());
+                ppg.setText(Double.toString(x.getHighestPPGPlayer().getPoints()));
+                ppgName.setText(x.getHighestPPGPlayer().getPlayerName());
+                rpg.setText(Double.toString(x.getHighestRPGPlayer().getTotalRebounds()));
+                rpgName.setText(x.getHighestRPGPlayer().getPlayerName());
+                apg.setText(Double.toString(x.getHighestAPGPlayer().getAssists()));
+                apgName.setText(x.getHighestAPGPlayer().getPlayerName());
+                bpg.setText(Double.toString(x.getHighestBPGPlayer().getBlocks()));
+                bpgName.setText(x.getHighestBPGPlayer().getPlayerName());
+                spg.setText(Double.toString(x.getHighestSPGPlayer().getSteals()));
+                spgName.setText(x.getHighestSPGPlayer().getPlayerName());
+
+            }
         }
     }
 

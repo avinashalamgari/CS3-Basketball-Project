@@ -11,23 +11,35 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  *
  * @author husker@us.ibm.com
  */
-public class LoadPlayers {
+
+
+public final class LoadPlayers {
     ArrayList<PlayerInfo> allPlayers = new ArrayList<>();
     ArrayList<YearlyStats> allYearlyStats  = new ArrayList<>();
+    ArrayList<TeamInfo> allTeamsInfo = new ArrayList<>();
+    TreeMap<Integer, TreeSet<String>> allYearAndTeams = new TreeMap();
+    Set<String> teamSet = new HashSet<>();
+    TreeMap<String, String> allTeams = new TreeMap();
 
     public LoadPlayers() throws FileNotFoundException, IOException {
+        loadTeams();
         loadPlayers();
+        
     }
     // /Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
     String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
     //String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
     public final void loadPlayers() throws FileNotFoundException, IOException {
-        int startIndexForSubstring = 45; // 53 for avi
+        int startIndexForSubstring = 45; // 53 for win and 45 on mac
         
         BufferedReader br = new BufferedReader(new FileReader(statsFile));  
         String line = null;  
@@ -101,6 +113,8 @@ public class LoadPlayers {
                         allPlayers.add(tempPlayer);
                     }
                     
+                    
+                    
                     PlayerStats tempPlayerStats;
                     tempPlayerStats = new PlayerStats( 
                             playerID,
@@ -139,6 +153,12 @@ public class LoadPlayers {
                     YearlyStats tempYear;
                     tempYear = getYearInfo(fileYear);
                     tempYear.addPlayerStats(tempPlayerStats);
+                    
+                    teamSet.add(teamName);
+                    TeamInfo tempTeamInfo;
+                    tempTeamInfo = getTeamInfo(teamName);
+                    tempTeamInfo.addPlayerStats(tempPlayerStats);
+                    tempTeamInfo.setYearsPlayed(fileYear);
                     
                 }
             }
@@ -206,6 +226,66 @@ public class LoadPlayers {
         tempYearlyStats = new YearlyStats(tempYear);
         allYearlyStats.add(tempYearlyStats);
         return tempYearlyStats;
+        
+    }
+    
+    public TeamInfo getTeamInfo(String teamAcronym){
+        TeamInfo tempTeamInfo;
+        
+        for(TeamInfo x : allTeamsInfo){
+            if (x.getTeamAcronym().equals(teamAcronym)){
+                return x;
+            }
+        }
+        
+        tempTeamInfo = new TeamInfo(teamAcronym);
+        tempTeamInfo.setTeamName(allTeams.get(teamAcronym));
+        allTeamsInfo.add(tempTeamInfo);
+        return tempTeamInfo;
+        
+    }
+    
+    public void loadTeams() {
+        allTeams.put("CHH", "Charlotte Hornets");
+        allTeams.put("VAN", "Vancouver Grizzlies");
+        allTeams.put("UTA", "Utah Jazz");
+        allTeams.put("SAS", "San Antonio Spurs");
+        allTeams.put("CHI", "Chicago Bulls");
+        allTeams.put("ORL", "Orlando Magic");
+        allTeams.put("WAS", "Washington Wizards");
+        allTeams.put("CHO", "Charlotte Hornets");
+        allTeams.put("PHI", "Philadelphia 76ers");
+        allTeams.put("SDC", "San Diego Clippers");
+        allTeams.put("NJN", "New Jersey Nets");
+        allTeams.put("PHO", "Phoenix Suns");
+        allTeams.put("NYK", "New York Knicks");
+        allTeams.put("MIA", "Miami Heat");
+        allTeams.put("NOH", "New Orleans Hornets");
+        allTeams.put("OKC", "Oklahoma City Thunder");
+        allTeams.put("BOS", "Boston Celtics");
+        allTeams.put("WSB", "Washington Bullets");
+        allTeams.put("GSW", "Golden State Warriors");
+        allTeams.put("NOK", "Charlotte Hornets");
+        allTeams.put("DEN", "Denver Nuggets");
+        allTeams.put("DAL", "Dallas Mavericks");
+        allTeams.put("SEA", "Seattle SuperSonics");
+        allTeams.put("NOP", "New Orleans Pelicans");
+        allTeams.put("HOU", "Houston Rockets");
+        allTeams.put("LAC", "Los Angeles Clippers");
+        allTeams.put("MIL", "Milwaukee Bucks");
+        allTeams.put("POR", "Portland TrailBlazers");
+        allTeams.put("DET", "Detroit Pistons");
+        allTeams.put("KCK", "Kansas City Kings");
+        allTeams.put("MIN", "Minnesota Timberwolves");
+        allTeams.put("SAC", "Sacramento Kings");
+        allTeams.put("MEM", "Memphis Grizzlies");
+        allTeams.put("LAL", "Los Angeles Lakers");
+        allTeams.put("TOR", "Toronto Raptors");
+        allTeams.put("ATL", "Atlanta Hawks");
+        allTeams.put("BRK", "Brooklyn Nets");
+        allTeams.put("CLE", "Cleveland Cavaliers");
+        allTeams.put("CHA", "Charlotte Bobcats");
+        allTeams.put("IND", "Indiana Pacers");
         
     }
 }
