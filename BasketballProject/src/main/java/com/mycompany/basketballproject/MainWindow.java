@@ -30,11 +30,11 @@ public class MainWindow extends javax.swing.JFrame {
             Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         //System.out.println("Load player data " + playerData.allPlayers.size());
-        System.out.println(playerData == null);
+        //System.out.println(playerData == null);
         
          initComponents();
          loadSeasonYears();
-         printTeamNames();
+         //printTeamNames();
     }
 
     /**
@@ -467,17 +467,6 @@ public class MainWindow extends javax.swing.JFrame {
     private void setValuesForSeasonLeaders(int selectedYear){
         for(YearlyStats x: playerData.allYearlyStats){
             if(x.getYearPlayed() == selectedYear){
-                x.setHighestReboundsPlayer();
-                x.setHighestPointsPlayer();
-                x.setHighestAssistsPlayer();
-                x.setHighestBlocksPlayer();
-                x.setHighestStealsPlayer();
-                x.setHighestPPGPlayer();
-                x.setHighestAPGPlayer();
-                x.setHighestRPGPlayer();
-                x.setHighestBPGPlayer();
-                x.setHighestSPGPlayer();
-
                 totalPoint.setText(Integer.toString(x.getHighestPointsPlayer().getTotalPointsScored()));
                 totalPointName.setText(x.getHighestPointsPlayer().getPlayerName());
                 totalRebound.setText(Integer.toString(x.getHighestReboundsPlayer().getTotalReboundsMade()));

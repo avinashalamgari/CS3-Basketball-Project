@@ -8,13 +8,12 @@ package com.mycompany.basketballproject;
 import java.util.ArrayList;
 
 
-public class YearlyStats {
-    private int yearPlayed;
+public class TeamByYear {
+    String teamAcronym;
+    String teamName;
+    int teamYear;
     ArrayList<PlayerStats> playerStats = new ArrayList<>();
-    // points, ppg, assists, apg, rebounds, rpg, blocks, bpg, steals, spg
-
-  
-
+    
     private PlayerStats highestPointsPlayer;
     private PlayerStats highestAssistsPlayer;
     private PlayerStats highestReboundsPlayer;
@@ -28,16 +27,26 @@ public class YearlyStats {
     private PlayerStats highestSPGPlayer;
     
 
-    public YearlyStats(int yearPlayed) {
-        this.yearPlayed = yearPlayed;
+    public TeamByYear(String teamAcronym, String teamName, int teamYear) {
+        this.teamAcronym = teamAcronym;
+        this.teamName = teamName;
+        this.teamYear = teamYear;
     }
     
     public void addPlayerStats(PlayerStats playerStat){
         this.playerStats.add(playerStat);
     }
 
-    public int getYearPlayed() {
-        return yearPlayed;
+    public String getTeamAcronym() {
+        return teamAcronym;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public int getTeamYear() {
+        return teamYear;
     }
     
     public PlayerStats getHighestPointsPlayer() {
@@ -227,12 +236,4 @@ public class YearlyStats {
             }
         }
     }
-
-   
-    
-   
-
-    
-    
-    
 }

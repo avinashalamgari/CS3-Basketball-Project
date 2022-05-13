@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- *
- * @author husker@us.ibm.com
- */
+
 public class TeamInfo {
    String teamAcronym;
    String teamName;

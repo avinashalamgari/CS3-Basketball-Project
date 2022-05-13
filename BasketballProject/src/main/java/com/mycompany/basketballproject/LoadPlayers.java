@@ -16,23 +16,22 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-/**
- *
- * @author husker@us.ibm.com
- */
+
 
 
 public final class LoadPlayers {
     ArrayList<PlayerInfo> allPlayers = new ArrayList<>();
     ArrayList<YearlyStats> allYearlyStats  = new ArrayList<>();
     ArrayList<TeamInfo> allTeamsInfo = new ArrayList<>();
+    ArrayList<TeamByYear> allTeamsByYear = new ArrayList<>();
     TreeMap<Integer, TreeSet<String>> allYearAndTeams = new TreeMap();
     Set<String> teamSet = new HashSet<>();
-    TreeMap<String, String> allTeams = new TreeMap();
+    TreeMap<String, String> allTeamsMap = new TreeMap();
 
     public LoadPlayers() throws FileNotFoundException, IOException {
         loadTeams();
         loadPlayers();
+        setYearlyStats();
         
     }
     // /Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
@@ -104,16 +103,6 @@ public final class LoadPlayers {
                     if (teamName.equals("TOT")){
                         continue;
                     }
-                    PlayerInfo tempPlayer;
-                    if (findPlayer(playerID)){
-                        tempPlayer = getPlayer(playerID);
-                        
-                    } else {
-                        tempPlayer = new PlayerInfo(playerID, playerName);
-                        allPlayers.add(tempPlayer);
-                    }
-                    
-                    
                     
                     PlayerStats tempPlayerStats;
                     tempPlayerStats = new PlayerStats( 
@@ -147,7 +136,8 @@ public final class LoadPlayers {
                             points,
                             playerName
                     );
-                    
+                    PlayerInfo tempPlayer;
+                    tempPlayer = getPlayerInfo(playerID, playerName);
                     tempPlayer.addPlayerStats(tempPlayerStats);
                     
                     YearlyStats tempYear;
@@ -159,6 +149,10 @@ public final class LoadPlayers {
                     tempTeamInfo = getTeamInfo(teamName);
                     tempTeamInfo.addPlayerStats(tempPlayerStats);
                     tempTeamInfo.setYearsPlayed(fileYear);
+                    
+                    TeamByYear tempTeamByYear;
+                    tempTeamByYear = getTeamByYearinfo(teamName, fileYear);
+                    tempTeamByYear.addPlayerStats(tempPlayerStats);
                     
                 }
             }
@@ -214,6 +208,21 @@ public final class LoadPlayers {
         
     }
     
+    public PlayerInfo getPlayerInfo(String playerID, String playerName){
+        PlayerInfo tempPlayerInfo;
+        
+        for(PlayerInfo x : allPlayers){
+            if(x.getPlayerID().equals(playerID)){
+                return x;
+            }
+        }
+        
+        tempPlayerInfo = new PlayerInfo(playerID, playerName);
+        allPlayers.add(tempPlayerInfo);
+        return tempPlayerInfo;
+        
+    }
+    
     public YearlyStats getYearInfo(int tempYear){
         YearlyStats tempYearlyStats;
         
@@ -239,53 +248,81 @@ public final class LoadPlayers {
         }
         
         tempTeamInfo = new TeamInfo(teamAcronym);
-        tempTeamInfo.setTeamName(allTeams.get(teamAcronym));
+        tempTeamInfo.setTeamName(allTeamsMap.get(teamAcronym));
         allTeamsInfo.add(tempTeamInfo);
         return tempTeamInfo;
         
     }
     
-    public void loadTeams() {
-        allTeams.put("CHH", "Charlotte Hornets");
-        allTeams.put("VAN", "Vancouver Grizzlies");
-        allTeams.put("UTA", "Utah Jazz");
-        allTeams.put("SAS", "San Antonio Spurs");
-        allTeams.put("CHI", "Chicago Bulls");
-        allTeams.put("ORL", "Orlando Magic");
-        allTeams.put("WAS", "Washington Wizards");
-        allTeams.put("CHO", "Charlotte Hornets");
-        allTeams.put("PHI", "Philadelphia 76ers");
-        allTeams.put("SDC", "San Diego Clippers");
-        allTeams.put("NJN", "New Jersey Nets");
-        allTeams.put("PHO", "Phoenix Suns");
-        allTeams.put("NYK", "New York Knicks");
-        allTeams.put("MIA", "Miami Heat");
-        allTeams.put("NOH", "New Orleans Hornets");
-        allTeams.put("OKC", "Oklahoma City Thunder");
-        allTeams.put("BOS", "Boston Celtics");
-        allTeams.put("WSB", "Washington Bullets");
-        allTeams.put("GSW", "Golden State Warriors");
-        allTeams.put("NOK", "Charlotte Hornets");
-        allTeams.put("DEN", "Denver Nuggets");
-        allTeams.put("DAL", "Dallas Mavericks");
-        allTeams.put("SEA", "Seattle SuperSonics");
-        allTeams.put("NOP", "New Orleans Pelicans");
-        allTeams.put("HOU", "Houston Rockets");
-        allTeams.put("LAC", "Los Angeles Clippers");
-        allTeams.put("MIL", "Milwaukee Bucks");
-        allTeams.put("POR", "Portland TrailBlazers");
-        allTeams.put("DET", "Detroit Pistons");
-        allTeams.put("KCK", "Kansas City Kings");
-        allTeams.put("MIN", "Minnesota Timberwolves");
-        allTeams.put("SAC", "Sacramento Kings");
-        allTeams.put("MEM", "Memphis Grizzlies");
-        allTeams.put("LAL", "Los Angeles Lakers");
-        allTeams.put("TOR", "Toronto Raptors");
-        allTeams.put("ATL", "Atlanta Hawks");
-        allTeams.put("BRK", "Brooklyn Nets");
-        allTeams.put("CLE", "Cleveland Cavaliers");
-        allTeams.put("CHA", "Charlotte Bobcats");
-        allTeams.put("IND", "Indiana Pacers");
+    public TeamByYear getTeamByYearinfo(String teamAcronym, int fileYear){
+        TeamByYear tempTeamByYear;
+        for(TeamByYear x : allTeamsByYear){
+            if (x.getTeamAcronym().equals(teamAcronym) && x.getTeamYear() == fileYear){
+                return x;
+            }
+            
+        }
+        tempTeamByYear = new TeamByYear(teamAcronym, allTeamsMap.get(teamAcronym), fileYear);
+        allTeamsByYear.add(tempTeamByYear);
+        return tempTeamByYear;
         
+    }
+    public void loadTeams() {
+        allTeamsMap.put("CHH", "Charlotte Hornets");
+        allTeamsMap.put("VAN", "Vancouver Grizzlies");
+        allTeamsMap.put("UTA", "Utah Jazz");
+        allTeamsMap.put("SAS", "San Antonio Spurs");
+        allTeamsMap.put("CHI", "Chicago Bulls");
+        allTeamsMap.put("ORL", "Orlando Magic");
+        allTeamsMap.put("WAS", "Washington Wizards");
+        allTeamsMap.put("CHO", "Charlotte Hornets");
+        allTeamsMap.put("PHI", "Philadelphia 76ers");
+        allTeamsMap.put("SDC", "San Diego Clippers");
+        allTeamsMap.put("NJN", "New Jersey Nets");
+        allTeamsMap.put("PHO", "Phoenix Suns");
+        allTeamsMap.put("NYK", "New York Knicks");
+        allTeamsMap.put("MIA", "Miami Heat");
+        allTeamsMap.put("NOH", "New Orleans Hornets");
+        allTeamsMap.put("OKC", "Oklahoma City Thunder");
+        allTeamsMap.put("BOS", "Boston Celtics");
+        allTeamsMap.put("WSB", "Washington Bullets");
+        allTeamsMap.put("GSW", "Golden State Warriors");
+        allTeamsMap.put("NOK", "Charlotte Hornets");
+        allTeamsMap.put("DEN", "Denver Nuggets");
+        allTeamsMap.put("DAL", "Dallas Mavericks");
+        allTeamsMap.put("SEA", "Seattle SuperSonics");
+        allTeamsMap.put("NOP", "New Orleans Pelicans");
+        allTeamsMap.put("HOU", "Houston Rockets");
+        allTeamsMap.put("LAC", "Los Angeles Clippers");
+        allTeamsMap.put("MIL", "Milwaukee Bucks");
+        allTeamsMap.put("POR", "Portland TrailBlazers");
+        allTeamsMap.put("DET", "Detroit Pistons");
+        allTeamsMap.put("KCK", "Kansas City Kings");
+        allTeamsMap.put("MIN", "Minnesota Timberwolves");
+        allTeamsMap.put("SAC", "Sacramento Kings");
+        allTeamsMap.put("MEM", "Memphis Grizzlies");
+        allTeamsMap.put("LAL", "Los Angeles Lakers");
+        allTeamsMap.put("TOR", "Toronto Raptors");
+        allTeamsMap.put("ATL", "Atlanta Hawks");
+        allTeamsMap.put("BRK", "Brooklyn Nets");
+        allTeamsMap.put("CLE", "Cleveland Cavaliers");
+        allTeamsMap.put("CHA", "Charlotte Bobcats");
+        allTeamsMap.put("IND", "Indiana Pacers");
+        
+    }
+    
+    public void setYearlyStats() {
+        for(YearlyStats x: this.allYearlyStats){
+            x.setHighestReboundsPlayer();
+            x.setHighestPointsPlayer();
+            x.setHighestAssistsPlayer();
+            x.setHighestBlocksPlayer();
+            x.setHighestStealsPlayer();
+            x.setHighestPPGPlayer();
+            x.setHighestAPGPlayer();
+            x.setHighestRPGPlayer();
+            x.setHighestBPGPlayer();
+            x.setHighestSPGPlayer();
+        }
     }
 }

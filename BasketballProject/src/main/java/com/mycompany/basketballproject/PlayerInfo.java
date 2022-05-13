@@ -7,10 +7,7 @@ package com.mycompany.basketballproject;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author husker@us.ibm.com
- */
+
 public class PlayerInfo {
     private String playerID;
     private String playerName;

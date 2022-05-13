@@ -5,10 +5,7 @@
  */
 package com.mycompany.basketballproject;
 
-/**
- *
- * @author husker@us.ibm.com
- */
+
 public class PlayerStats {
     private String playerID;
     private int yearPlayed;

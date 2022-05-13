@@ -9,10 +9,7 @@ package com.mycompany.basketballproject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- *
- * @author husker@us.ibm.com
- */
+
 public class MainRunner {
     
     public static ArrayList<Integer> nbaYears = new ArrayList();
