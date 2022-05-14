@@ -13,6 +13,7 @@ public class TeamByYear {
     String teamName;
     int teamYear;
     ArrayList<PlayerStats> playerStats = new ArrayList<>();
+    ArrayList<Double> playerAverages = new ArrayList<>();
     
     private PlayerStats highestPointsPlayer;
     private PlayerStats highestAssistsPlayer;
@@ -25,6 +26,13 @@ public class TeamByYear {
     private PlayerStats highestRPGPlayer;
     private PlayerStats highestBPGPlayer;
     private PlayerStats highestSPGPlayer;
+    
+    private double sgAverage = 0;
+    private double pgAverage = 0;
+    private double pfAverage = 0;
+    private double sfAverage = 0;
+    private double cAverage = 0;
+    
     
 
     public TeamByYear(String teamAcronym, String teamName, int teamYear) {
@@ -235,5 +243,59 @@ public class TeamByYear {
                 totalRebounds = x.getTotalReboundsMade();
             }
         }
+    }
+    
+    public void setAverageShootingGaurd(){
+        if (this.sgAverage !=0) {
+            return;
+        }
+       
+        this.sgAverage = averageScoreByPostion("SG");
+    }
+    public void setAveragePointGaurd(){
+        if (this.pgAverage !=0) {
+            return;
+        }
+        
+        this.pgAverage = averageScoreByPostion("PG");
+    }
+    public void setAveragePowerForward(){
+        if (this.pfAverage !=0) {
+            return;
+        }
+        
+        this.pfAverage = averageScoreByPostion("PF");
+    }
+    public void setAverageSmallForward(){
+        if (this.sfAverage !=0) {
+            return;
+        }
+        
+        this.sfAverage = averageScoreByPostion("SF");
+    }
+    public void setAverageCenter(){
+        if (this.cAverage !=0) {
+            return;
+        }
+        
+        this.cAverage = averageScoreByPostion("C");
+    }
+    
+    public double averageScoreByPostion(String positionPlayed){
+        double tempAverage = 0;
+        int numberOfPlayers = 0;
+        for(PlayerStats x : this.playerStats){
+            if (!(x.getPositionPlayed().equals(positionPlayed))) {
+                continue;
+            }
+            tempAverage += x.getPoints()/x.getMinutesPlayed();
+            numberOfPlayers +=1;
+            
+        }
+        return (tempAverage/numberOfPlayers)*48;
+    }
+    
+    public int predictedTeamScore(){
+        return (int)(this.cAverage + this.pfAverage + this.sfAverage + this.pgAverage + this.sgAverage);
     }
 }

@@ -32,6 +32,7 @@ public final class LoadPlayers {
         loadTeams();
         loadPlayers();
         setYearlyStats();
+        setTeamInfoByYearStats();
         
     }
     // /Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
@@ -323,6 +324,26 @@ public final class LoadPlayers {
             x.setHighestRPGPlayer();
             x.setHighestBPGPlayer();
             x.setHighestSPGPlayer();
+        }
+    }
+    
+    public void setTeamInfoByYearStats() {
+        for(TeamByYear x: this.allTeamsByYear){
+            x.setHighestReboundsPlayer();
+            x.setHighestPointsPlayer();
+            x.setHighestAssistsPlayer();
+            x.setHighestBlocksPlayer();
+            x.setHighestStealsPlayer();
+            x.setHighestPPGPlayer();
+            x.setHighestAPGPlayer();
+            x.setHighestRPGPlayer();
+            x.setHighestBPGPlayer();
+            x.setHighestSPGPlayer();
+            x.setAveragePointGaurd();
+            x.setAverageShootingGaurd();
+            x.setAverageSmallForward();
+            x.setAveragePowerForward();
+            x.setAverageCenter();
         }
     }
 }

@@ -345,7 +345,16 @@ public class MainWindow extends javax.swing.JFrame {
         int selectedYear = Integer.parseInt(seasonYears.getItemAt(seasonYears.getSelectedIndex()).substring(0,4));
         if (selectedItem.equals("All Teams")){
             setValuesForSeasonLeaders(selectedYear);
+            return;
         }
+        setValuesForSeasonLeadersByTeamAndYear(selectedYear, selectedItem);
+        TeamByYear tempTeam = null;
+        for(TeamByYear x : playerData.allTeamsByYear){
+            if (x.getTeamYear()==selectedYear && x.getTeamName().equals(selectedItem)){
+                tempTeam = x;
+            }
+        }
+        System.out.println("Team Average Score is " + tempTeam.predictedTeamScore());
     }//GEN-LAST:event_teamNamesActionPerformed
 
     /**
@@ -488,6 +497,33 @@ public class MainWindow extends javax.swing.JFrame {
                 spg.setText(Double.toString(x.getHighestSPGPlayer().getSteals()));
                 spgName.setText(x.getHighestSPGPlayer().getPlayerName());
 
+            }
+        }
+    }
+    
+    private void setValuesForSeasonLeadersByTeamAndYear(int selectedYear, String teamName){
+        for(TeamByYear x: playerData.allTeamsByYear){
+            if (x.teamName.equals(teamName) && x.getTeamYear() == selectedYear){
+                totalPoint.setText(Integer.toString(x.getHighestPointsPlayer().getTotalPointsScored()));
+                totalPointName.setText(x.getHighestPointsPlayer().getPlayerName());
+                totalRebound.setText(Integer.toString(x.getHighestReboundsPlayer().getTotalReboundsMade()));
+                totalReboundName.setText(x.getHighestReboundsPlayer().getPlayerName());
+                totalAssist.setText(Integer.toString(x.getHighestAssistsPlayer().getTotalAssistsMade()));
+                totalAssistName.setText(x.getHighestAssistsPlayer().getPlayerName());
+                totalBlock.setText(Integer.toString(x.getHighestBlocksPlayer().getTotalBlocksMade()));
+                totalBlockName.setText(x.getHighestBlocksPlayer().getPlayerName());
+                totalSteal.setText(Integer.toString(x.getHighestStealsPlayer().getTotalStealsMade()));
+                totalStealName.setText(x.getHighestStealsPlayer().getPlayerName());
+                ppg.setText(Double.toString(x.getHighestPPGPlayer().getPoints()));
+                ppgName.setText(x.getHighestPPGPlayer().getPlayerName());
+                rpg.setText(Double.toString(x.getHighestRPGPlayer().getTotalRebounds()));
+                rpgName.setText(x.getHighestRPGPlayer().getPlayerName());
+                apg.setText(Double.toString(x.getHighestAPGPlayer().getAssists()));
+                apgName.setText(x.getHighestAPGPlayer().getPlayerName());
+                bpg.setText(Double.toString(x.getHighestBPGPlayer().getBlocks()));
+                bpgName.setText(x.getHighestBPGPlayer().getPlayerName());
+                spg.setText(Double.toString(x.getHighestSPGPlayer().getSteals()));
+                spgName.setText(x.getHighestSPGPlayer().getPlayerName());
             }
         }
     }
