@@ -37,11 +37,11 @@ public final class LoadPlayers {
         setAllTimeStats();
         
     }
-    // /Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
-    //String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
-    String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
+    //Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
+    String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
+    //String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
     public final void loadPlayers() throws FileNotFoundException, IOException {
-        int startIndexForSubstring = 53; // 53 for win and 45 on mac
+        int startIndexForSubstring = 45; // 53 for win and 45 on mac
         
         BufferedReader br = new BufferedReader(new FileReader(statsFile));  
         String line = null;  
@@ -352,6 +352,8 @@ public final class LoadPlayers {
             x.setAverageSmallForward();
             x.setAveragePowerForward();
             x.setAverageCenter();
+            x.setAverageOfPlayers();
+            x.setTeamAverage();
         }
     }
     

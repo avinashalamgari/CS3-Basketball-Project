@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,6 +38,7 @@ public class MainWindow extends javax.swing.JFrame {
          loadSeasonYears();
          loadAllTimeTeams();
          //printTeamNames();
+         loadPredictionTable();
     }
 
     /**
@@ -120,6 +122,8 @@ public class MainWindow extends javax.swing.JFrame {
         allTimeTeams = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        predictionTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -455,15 +459,35 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("All Time Leaders", jPanel3);
 
+        predictionTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Season", "Winner", "Scoring Rank", "Prediction"
+            }
+        ));
+        predictionTable.setShowGrid(true);
+        jScrollPane1.setViewportView(predictionTable);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 831, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(363, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prediction", jPanel4);
@@ -630,9 +654,11 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField ppg;
     private javax.swing.JTextField ppgName;
+    private javax.swing.JTable predictionTable;
     private javax.swing.JTextField rpg;
     private javax.swing.JTextField rpgName;
     private javax.swing.JComboBox<String> seasonYears;
@@ -830,5 +856,19 @@ public class MainWindow extends javax.swing.JFrame {
 //        allTimeSPG.setText(Double.toString(playerData.allTimeLeaders.getHighestSPGPlayer().getSpg()));
     }
 
-    
+    public void loadPredictionTable(){
+        DefaultTableModel tableModel = (DefaultTableModel) predictionTable.getModel();
+        tableModel.setRowCount(0);
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        
+    }
 }

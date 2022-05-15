@@ -6,6 +6,7 @@
 package com.mycompany.basketballproject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class TeamByYear {
@@ -32,6 +33,7 @@ public class TeamByYear {
     private double pfAverage = 0;
     private double sfAverage = 0;
     private double cAverage = 0;
+    private double teamAverage = 0;
     
     
 
@@ -298,4 +300,39 @@ public class TeamByYear {
     public int predictedTeamScore(){
         return (int)(this.cAverage + this.pfAverage + this.sfAverage + this.pgAverage + this.sgAverage);
     }
+    
+    public void setAverageOfPlayers(){
+        double tempAverage = 0;
+        for(PlayerStats x : this.playerStats){        
+            tempAverage = x.getPoints()/x.getMinutesPlayed();
+            if (tempAverage > 0) {
+                this.playerAverages.add(tempAverage);
+            }
+        }
+        
+    }
+    
+    public void setTeamAverage() {
+        Double tempAvg=  0.0;
+        int averageOfPlayers = 13;
+        Collections.sort(this.playerAverages, Collections.reverseOrder());
+        //System.out.println(this.teamYear + this.teamAcronym + this.playerAverages.size());
+        
+        if(this.playerAverages.size() < averageOfPlayers){
+            for (Double avg : this.playerAverages){
+                tempAvg += avg;
+            }
+            this.teamAverage = tempAvg/this.playerAverages.size();
+        } else{
+            for ( int i = 0; i < 12; i++){ 
+                tempAvg += this.playerAverages.get(i);
+            }
+            this.teamAverage = tempAvg/averageOfPlayers;
+        }
+    }
+
+    public double getTeamAverage() {
+        return teamAverage;
+    }
+    
 }

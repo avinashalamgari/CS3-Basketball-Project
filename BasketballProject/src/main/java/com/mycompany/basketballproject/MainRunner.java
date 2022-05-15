@@ -8,6 +8,7 @@ package com.mycompany.basketballproject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class MainRunner {
@@ -68,6 +69,12 @@ public class MainRunner {
              }
          }
          System.out.println("Name and score of player: " + tempPlayer.getPlayerName() + " " + tempPlayer.getTotalRebounds());
+         
+         for(TeamByYear y : loadPlayers.allTeamsByYear){
+            if (y.getTeamYear() == 2020){
+                System.out.println(y.getTeamAverage()*240 + " " + y.getTeamName() + " " + y.getTeamYear());
+            }
+         }
     }
     
     
