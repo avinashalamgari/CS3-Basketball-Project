@@ -8,6 +8,7 @@ package com.mycompany.basketballproject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,6 +35,7 @@ public class MainWindow extends javax.swing.JFrame {
         
          initComponents();
          loadSeasonYears();
+         loadAllTimeTeams();
          //printTeamNames();
     }
 
@@ -85,6 +87,38 @@ public class MainWindow extends javax.swing.JFrame {
         teamNames = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        allTimePointsName = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        allTimeAssistsName = new javax.swing.JTextField();
+        allTimeReboundsName = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        allTimeBlocksName = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        allTimeStealsName = new javax.swing.JTextField();
+        allTimePoints = new javax.swing.JTextField();
+        allTimeAssists = new javax.swing.JTextField();
+        allTimeRebounds = new javax.swing.JTextField();
+        allTimeBlocks = new javax.swing.JTextField();
+        allTimeSteals = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        allTimePPGName = new javax.swing.JTextField();
+        allTimeAPGName = new javax.swing.JTextField();
+        allTimeRPGName = new javax.swing.JTextField();
+        allTimeBPGName = new javax.swing.JTextField();
+        allTimeSPGName = new javax.swing.JTextField();
+        allTimePPG = new javax.swing.JTextField();
+        allTimeAPG = new javax.swing.JTextField();
+        allTimeRPG = new javax.swing.JTextField();
+        allTimeBPG = new javax.swing.JTextField();
+        allTimeSPG = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        allTimeTeams = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,6 +136,8 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel6.setText("APG Leader");
 
         jLabel7.setText("RPG Leader");
+
+        totalPointName.setEditable(false);
 
         seasonYears.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         seasonYears.addActionListener(new java.awt.event.ActionListener() {
@@ -270,7 +306,42 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Season Stat Leaders", jPanel1);
 
-        jLabel13.setText("jLabel13");
+        jLabel13.setText("Total Points");
+
+        jLabel15.setText("Total Assists");
+
+        jLabel16.setText("Total Rebounds");
+
+        jLabel17.setText("Total Blocks");
+
+        jLabel18.setText("Total Steals");
+
+        jLabel19.setText("PPG Leader");
+
+        jLabel20.setText("APG Leader");
+
+        jLabel21.setText("RPG Leader");
+
+        jLabel22.setText("BPG Leader");
+
+        jLabel23.setText("SPG Leader");
+
+        allTimePPG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allTimePPGActionPerformed(evt);
+            }
+        });
+
+        jLabel24.setText("ALL TIME LEADERS");
+
+        allTimeTeams.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        allTimeTeams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allTimeTeamsActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setText("Select Team");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -278,15 +349,108 @@ public class MainWindow extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel13)
-                .addContainerGap(746, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel15))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(allTimeBlocksName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(allTimeStealsName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(allTimePointsName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(allTimeAssistsName)
+                            .addComponent(allTimeReboundsName))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(allTimeAssists, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(allTimePoints, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(allTimeRebounds, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(allTimeBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(allTimeSteals, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(allTimeAPGName, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(allTimeRPGName)
+                            .addComponent(allTimeBPGName)
+                            .addComponent(allTimeSPGName)
+                            .addComponent(allTimePPGName))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(allTimeBPG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(allTimeAPG)
+                            .addComponent(allTimePPG)
+                            .addComponent(allTimeRPG)
+                            .addComponent(allTimeSPG)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel25)
+                        .addGap(18, 18, 18)
+                        .addComponent(allTimeTeams, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jLabel13)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(allTimeTeams, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(allTimePointsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(allTimePoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19)
+                    .addComponent(allTimePPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(allTimePPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(allTimeAssistsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(allTimeAssists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
+                    .addComponent(allTimeAPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(allTimeAPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(allTimeReboundsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(allTimeRebounds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21)
+                    .addComponent(allTimeRPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(allTimeRPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(allTimeBlocksName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(allTimeBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22)
+                    .addComponent(allTimeBPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(allTimeBPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(allTimeStealsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(allTimeSteals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel23)
+                        .addComponent(allTimeSPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(allTimeSPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("All Time Leaders", jPanel3);
@@ -357,6 +521,25 @@ public class MainWindow extends javax.swing.JFrame {
         System.out.println("Team Average Score is " + tempTeam.predictedTeamScore());
     }//GEN-LAST:event_teamNamesActionPerformed
 
+    private void allTimePPGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allTimePPGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_allTimePPGActionPerformed
+
+    private void allTimeTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allTimeTeamsActionPerformed
+        // TODO add your handling code here:
+        
+        String selectedItem = (String) allTimeTeams.getSelectedItem();
+        if(selectedItem == null){
+            return;
+        }
+        if(selectedItem.equals("All Teams")){
+            setValuesForAllTimeLeaders();
+            return;
+        }
+        
+        setValuesForAllTimeTeamLeaders(selectedItem);
+    }//GEN-LAST:event_allTimeTeamsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -394,6 +577,27 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField allTimeAPG;
+    private javax.swing.JTextField allTimeAPGName;
+    private javax.swing.JTextField allTimeAssists;
+    private javax.swing.JTextField allTimeAssistsName;
+    private javax.swing.JTextField allTimeBPG;
+    private javax.swing.JTextField allTimeBPGName;
+    private javax.swing.JTextField allTimeBlocks;
+    private javax.swing.JTextField allTimeBlocksName;
+    private javax.swing.JTextField allTimePPG;
+    private javax.swing.JTextField allTimePPGName;
+    private javax.swing.JTextField allTimePoints;
+    private javax.swing.JTextField allTimePointsName;
+    private javax.swing.JTextField allTimeRPG;
+    private javax.swing.JTextField allTimeRPGName;
+    private javax.swing.JTextField allTimeRebounds;
+    private javax.swing.JTextField allTimeReboundsName;
+    private javax.swing.JTextField allTimeSPG;
+    private javax.swing.JTextField allTimeSPGName;
+    private javax.swing.JTextField allTimeSteals;
+    private javax.swing.JTextField allTimeStealsName;
+    private javax.swing.JComboBox<String> allTimeTeams;
     private javax.swing.JTextField apg;
     private javax.swing.JTextField apgName;
     private javax.swing.JTextField bpg;
@@ -404,7 +608,18 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -464,6 +679,19 @@ public class MainWindow extends javax.swing.JFrame {
             teamNames.addItem(z);
         }
         
+    }
+    
+    private void loadAllTimeTeams(){
+        allTimeTeams.removeAllItems();
+        allTimeTeams.addItem("All Teams");
+        ArrayList<String> tempTeamNames = new ArrayList<>();
+        for(Map.Entry<String, String> entry : playerData.allTeamsMap.entrySet()){
+            tempTeamNames.add(entry.getValue());
+        }
+        Collections.sort(tempTeamNames);
+        for(String x : tempTeamNames){
+            allTimeTeams.addItem(x);
+        }
     }
     
     private void printTeamNames() {
@@ -526,6 +754,80 @@ public class MainWindow extends javax.swing.JFrame {
                 spgName.setText(x.getHighestSPGPlayer().getPlayerName());
             }
         }
+    }
+    
+    private void setValuesForAllTimeLeaders(){
+        allTimePointsName.setText(playerData.allTimeLeaders.getHighestPointsPlayer().getPlayerName());
+        allTimePoints.setText(Integer.toString(playerData.allTimeLeaders.getHighestPointsPlayer().getTotalPoints()));
+        allTimeAssistsName.setText(playerData.allTimeLeaders.getHighestAssistsPlayer().getPlayerName());
+        allTimeAssists.setText(Integer.toString(playerData.allTimeLeaders.getHighestAssistsPlayer().getTotalAssists()));
+        allTimeReboundsName.setText(playerData.allTimeLeaders.getHighestReboundsPlayer().getPlayerName());
+        allTimeRebounds.setText(Integer.toString(playerData.allTimeLeaders.getHighestReboundsPlayer().getTotalRebounds()));
+        allTimeBlocksName.setText(playerData.allTimeLeaders.getHighestBlocksPlayer().getPlayerName());
+        allTimeBlocks.setText(Integer.toString(playerData.allTimeLeaders.getHighestBlocksPlayer().getTotalBlocks()));
+        allTimeStealsName.setText(playerData.allTimeLeaders.getHighestStealsPlayer().getPlayerName());
+        allTimeSteals.setText(Integer.toString(playerData.allTimeLeaders.getHighestStealsPlayer().getTotalSteals()));
+        
+        allTimePPGName.setText(playerData.allTimeLeaders.getHighestPPGPlayer().getPlayerName());
+        allTimePPG.setText(Double.toString(playerData.allTimeLeaders.getHighestPPGPlayer().getPpg()));
+        allTimeAPGName.setText(playerData.allTimeLeaders.getHighestAPGPlayer().getPlayerName());
+        allTimeRPG.setText(Double.toString(playerData.allTimeLeaders.getHighestAPGPlayer().getApg()));
+        allTimeRPGName.setText(playerData.allTimeLeaders.getHighestRPGPlayer().getPlayerName());
+        allTimeAPG.setText(Double.toString(playerData.allTimeLeaders.getHighestRPGPlayer().getRpg()));
+        allTimeBPGName.setText(playerData.allTimeLeaders.getHighestBPGPlayer().getPlayerName());
+        allTimeBPG.setText(Double.toString(playerData.allTimeLeaders.getHighestBPGPlayer().getBpg()));
+        allTimeSPGName.setText(playerData.allTimeLeaders.getHighestSPGPlayer().getPlayerName());
+        allTimeSPG.setText(Double.toString(playerData.allTimeLeaders.getHighestSPGPlayer().getSpg()));
+    }
+    
+    private void setValuesForAllTimeTeamLeaders(String selectedTeam){
+        for(TeamInfo x : playerData.allTeamsInfo){
+            if(x.getTeamName().equals(selectedTeam)){
+                allTimePointsName.setText(x.getHighestPointsPlayer().getPlayerName());
+                allTimePoints.setText(Integer.toString(x.getHighestPointsPlayer().getTotalPoints()));
+                allTimeAssistsName.setText(x.getHighestAssistsPlayer().getPlayerName());
+                allTimeAssists.setText(Integer.toString(x.getHighestAssistsPlayer().getTotalAssists()));
+                allTimeReboundsName.setText(x.getHighestReboundsPlayer().getPlayerName());
+                allTimeRebounds.setText(Integer.toString(x.getHighestReboundsPlayer().getTotalRebounds()));
+                allTimeBlocksName.setText(x.getHighestBlocksPlayer().getPlayerName());
+                allTimeBlocks.setText(Integer.toString(x.getHighestBlocksPlayer().getTotalBlocks()));
+                allTimeStealsName.setText(x.getHighestStealsPlayer().getPlayerName());
+                allTimeSteals.setText(Integer.toString(x.getHighestStealsPlayer().getTotalSteals()));
+                
+                allTimePPGName.setText(x.getHighestPPGPlayer().getPlayerName());
+                allTimePPG.setText(Double.toString(x.getHighestPPGPlayer().getPpg()));
+                allTimeAPGName.setText(x.getHighestAPGPlayer().getPlayerName());
+                allTimeAPG.setText(Double.toString(x.getHighestAPGPlayer().getApg()));
+                allTimeRPGName.setText(x.getHighestRPGPlayer().getPlayerName());
+                allTimeRPG.setText(Double.toString(x.getHighestRPGPlayer().getRpg()));
+                allTimeBPGName.setText(x.getHighestBPGPlayer().getPlayerName());
+                allTimeBPG.setText(Double.toString(x.getHighestBPGPlayer().getBpg()));
+                allTimeSPGName.setText(x.getHighestSPGPlayer().getPlayerName());
+                allTimeSPG.setText(Double.toString(x.getHighestSPGPlayer().getSpg()));
+            }
+            
+        }
+//        allTimePointsName.setText(playerData.allTimeLeaders.getHighestPointsPlayer().getPlayerName());
+//        allTimePoints.setText(Integer.toString(playerData.allTimeLeaders.getHighestPointsPlayer().getTotalPoints()));
+//        allTimeAssistsName.setText(playerData.allTimeLeaders.getHighestAssistsPlayer().getPlayerName());
+//        allTimeAssists.setText(Integer.toString(playerData.allTimeLeaders.getHighestAssistsPlayer().getTotalAssists()));
+//        allTimeReboundsName.setText(playerData.allTimeLeaders.getHighestReboundsPlayer().getPlayerName());
+//        allTimeRebounds.setText(Integer.toString(playerData.allTimeLeaders.getHighestReboundsPlayer().getTotalRebounds()));
+//        allTimeBlocksName.setText(playerData.allTimeLeaders.getHighestBlocksPlayer().getPlayerName());
+//        allTimeBlocks.setText(Integer.toString(playerData.allTimeLeaders.getHighestBlocksPlayer().getTotalBlocks()));
+//        allTimeStealsName.setText(playerData.allTimeLeaders.getHighestStealsPlayer().getPlayerName());
+//        allTimeSteals.setText(Integer.toString(playerData.allTimeLeaders.getHighestStealsPlayer().getTotalSteals()));
+//        
+//        allTimePPGName.setText(playerData.allTimeLeaders.getHighestPPGPlayer().getPlayerName());
+//        allTimePPG.setText(Double.toString(playerData.allTimeLeaders.getHighestPPGPlayer().getPpg()));
+//        allTimeAPGName.setText(playerData.allTimeLeaders.getHighestAPGPlayer().getPlayerName());
+//        allTimeAPG.setText(Double.toString(playerData.allTimeLeaders.getHighestAPGPlayer().getApg()));
+//        allTimeRPGName.setText(playerData.allTimeLeaders.getHighestRPGPlayer().getPlayerName());
+//        allTimeRPG.setText(Double.toString(playerData.allTimeLeaders.getHighestRPGPlayer().getRpg()));
+//        allTimeBPGName.setText(playerData.allTimeLeaders.getHighestBPGPlayer().getPlayerName());
+//        allTimeBPG.setText(Double.toString(playerData.allTimeLeaders.getHighestBPGPlayer().getBpg()));
+//        allTimeSPGName.setText(playerData.allTimeLeaders.getHighestSPGPlayer().getPlayerName());
+//        allTimeSPG.setText(Double.toString(playerData.allTimeLeaders.getHighestSPGPlayer().getSpg()));
     }
 
     

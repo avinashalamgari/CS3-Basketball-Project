@@ -27,19 +27,21 @@ public final class LoadPlayers {
     TreeMap<Integer, TreeSet<String>> allYearAndTeams = new TreeMap();
     Set<String> teamSet = new HashSet<>();
     TreeMap<String, String> allTeamsMap = new TreeMap();
+    AllTimeLeaders allTimeLeaders;
 
     public LoadPlayers() throws FileNotFoundException, IOException {
         loadTeams();
         loadPlayers();
         setYearlyStats();
         setTeamInfoByYearStats();
+        setAllTimeStats();
         
     }
     // /Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
-    String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
-    //String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
+    //String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
+    String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
     public final void loadPlayers() throws FileNotFoundException, IOException {
-        int startIndexForSubstring = 45; // 53 for win and 45 on mac
+        int startIndexForSubstring = 53; // 53 for win and 45 on mac
         
         BufferedReader br = new BufferedReader(new FileReader(statsFile));  
         String line = null;  
@@ -205,6 +207,12 @@ public final class LoadPlayers {
             tempPlayer.setTotalRebounds();
             tempPlayer.setTotalBlocks();
             tempPlayer.setTotalSteals();
+            tempPlayer.setTotalGamesPlayed();
+            tempPlayer.setPpg();
+            tempPlayer.setApg();
+            tempPlayer.setRpg();
+            tempPlayer.setBpg();
+            tempPlayer.setSpg();
         }
         
     }
@@ -269,7 +277,7 @@ public final class LoadPlayers {
         
     }
     public void loadTeams() {
-        allTeamsMap.put("CHH", "Charlotte Hornets");
+        allTeamsMap.put("CHH", "Charlotte Hornets (Old)");
         allTeamsMap.put("VAN", "Vancouver Grizzlies");
         allTeamsMap.put("UTA", "Utah Jazz");
         allTeamsMap.put("SAS", "San Antonio Spurs");
@@ -288,7 +296,7 @@ public final class LoadPlayers {
         allTeamsMap.put("BOS", "Boston Celtics");
         allTeamsMap.put("WSB", "Washington Bullets");
         allTeamsMap.put("GSW", "Golden State Warriors");
-        allTeamsMap.put("NOK", "Charlotte Hornets");
+        allTeamsMap.put("NOK", "New Orleans Hornets (Katrina)");
         allTeamsMap.put("DEN", "Denver Nuggets");
         allTeamsMap.put("DAL", "Dallas Mavericks");
         allTeamsMap.put("SEA", "Seattle SuperSonics");
@@ -344,6 +352,49 @@ public final class LoadPlayers {
             x.setAverageSmallForward();
             x.setAveragePowerForward();
             x.setAverageCenter();
+        }
+    }
+    
+    public void setAllTimeStats(){
+        AllTimeLeaders allTime = new AllTimeLeaders();
+        allTime.setAllStats(this.allPlayers);
+        this.allTimeLeaders = allTime;
+        
+        for(TeamInfo team : this.allTeamsInfo){
+            team.setTeamPlayerInfo();
+            
+        }
+        for(TeamInfo x : this.allTeamsInfo){
+            for(TeamPlayerInfo y : x.teamPlayerInfo){
+                y.setTotalPoints();
+                y.setTotalAssists();
+                y.setTotalRebounds();
+                y.setTotalBlocks();
+                y.setTotalSteals();
+                y.setTotalGamesPlayed();
+                
+                y.setPpg();
+                y.setApg();
+                y.setRpg();
+                y.setBpg();
+                y.setSpg();
+            }
+            
+        }
+        
+        for(TeamInfo z : this.allTeamsInfo){
+            z.setHighestPointsPlayer();
+            z.setHighestAssistsPlayer();
+            z.setHighestReboundsPlayer();
+            z.setHighestBlocksPlayer();
+            z.setHighestStealsPlayer();
+            
+            z.setHighestPPGPlayer();
+            z.setHighestAPGPlayer();
+            z.setHighestBPGPlayer();
+            z.setHighestRPGPlayer();
+            z.setHighestSPGPlayer();
+            
         }
     }
 }

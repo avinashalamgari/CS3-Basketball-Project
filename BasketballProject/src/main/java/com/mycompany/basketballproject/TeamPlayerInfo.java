@@ -7,10 +7,17 @@ package com.mycompany.basketballproject;
 
 import java.util.ArrayList;
 
-
-public class PlayerInfo {
+/**
+ *
+ * @author User
+ */
+public class TeamPlayerInfo {
     private String playerID;
     private String playerName;
+    String teamAcronym;
+    String teamName;
+    ArrayList<PlayerStats> playerStats = new ArrayList<>();
+    
     private int totalPoints;
     private int totalAssists;
     private int totalRebounds;
@@ -23,12 +30,30 @@ public class PlayerInfo {
     private double bpg;
     private double spg;
     private int totalGamesPlayed;
-    ArrayList<PlayerStats> playerStats = new ArrayList<>();
 
-    public PlayerInfo(String playerID, String playerName) {
+
+    public TeamPlayerInfo(String playerID, String playerName) {
         this.playerID = playerID;
         this.playerName = playerName;
     }
+
+    public String getTeamAcronym() {
+        return teamAcronym;
+    }
+
+    public void setTeamAcronym(String teamAcronym) {
+        this.teamAcronym = teamAcronym;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+    
+    
 
     public String getPlayerID() {
         return playerID;
@@ -38,8 +63,8 @@ public class PlayerInfo {
         return playerName;
     }
     
-    public void addPlayerStats(PlayerStats playerStat){
-        this.playerStats.add(playerStat);
+    public void addPlayerStats(PlayerStats playerStats){
+        this.playerStats.add(playerStats);
     }
 
     public int getTotalPoints() {
@@ -65,15 +90,22 @@ public class PlayerInfo {
         }
         this.totalAssists = assists;
     }
+    
+    
 
     public int getTotalRebounds() {
         return totalRebounds;
     }
 
     public void setTotalRebounds() {
+        // Dennis Rodman*\rodmade01
+
         int rebounds = 0;
         for(PlayerStats x : this.playerStats){
             rebounds += x.getTotalReboundsMade();
+            if(x.getPlayerID().equals("rodmade01") && x.getTeamName().equals("CHI")){
+                System.out.println(x.getTotalReboundsMade() + " " + x.getGamesPlayed());
+            }
         }
         this.totalRebounds = rebounds;
     }
@@ -95,24 +127,11 @@ public class PlayerInfo {
     }
 
     public void setTotalSteals() {
-        int steals = 0;
+       int steals = 0;
         for(PlayerStats x : this.playerStats){
             steals += x.getTotalStealsMade();
         }
         this.totalSteals = steals;
-    }
-
-    public int getTotalGamesPlayed() {
-        return totalGamesPlayed;
-    }
-    
-    
-    public void setTotalGamesPlayed(){
-        int games = 0;
-        for(PlayerStats x : this.playerStats){
-            games += x.getGamesPlayed();
-        }
-        this.totalGamesPlayed = games;
     }
 
     public double getPpg() {
@@ -159,8 +178,18 @@ public class PlayerInfo {
         double tempSPG = (double)(this.getTotalSteals() * 1.0 / this.getTotalGamesPlayed());
         this.spg = Math.round(tempSPG * 100.0) / 100.0;
     }
-    
-    
+
+    public int getTotalGamesPlayed() {
+        return totalGamesPlayed;
+    }
+
+    public void setTotalGamesPlayed() {
+        int games = 0;
+        for(PlayerStats x : this.playerStats){
+            games += x.getGamesPlayed();
+        }
+        this.totalGamesPlayed = games;
+    }
     
     
     

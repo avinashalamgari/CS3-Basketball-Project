@@ -265,6 +265,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="totalPointName">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="totalAssistName">
             </Component>
@@ -386,17 +389,126 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="746" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="allTimeBlocksName" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="allTimeStealsName" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="allTimePointsName" min="-2" pref="155" max="-2" attributes="0"/>
+                                  <Component id="allTimeAssistsName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="allTimeReboundsName" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="allTimeAssists" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="allTimePoints" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="allTimeRebounds" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="allTimeBlocks" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="allTimeSteals" min="-2" pref="60" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="allTimeAPGName" alignment="0" pref="142" max="32767" attributes="0"/>
+                                  <Component id="allTimeRPGName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="allTimeBPGName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="allTimeSPGName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="allTimePPGName" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="allTimeBPG" alignment="1" pref="142" max="32767" attributes="0"/>
+                                  <Component id="allTimeAPG" max="32767" attributes="0"/>
+                                  <Component id="allTimePPG" max="32767" attributes="0"/>
+                                  <Component id="allTimeRPG" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="allTimeSPG" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="allTimeTeams" min="-2" pref="167" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="331" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeTeams" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimePointsName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimePoints" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimePPGName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimePPG" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="allTimeAssistsName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeAssists" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeAPGName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeAPG" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="allTimeReboundsName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeRebounds" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeRPGName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeRPG" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeBlocksName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeBlocks" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeBPGName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allTimeBPG" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="allTimeStealsName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="allTimeSteals" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="allTimeSPGName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="allTimeSPG" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="167" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -404,7 +516,123 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel13"/>
+                <Property name="text" type="java.lang.String" value="Total Points"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimePointsName">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel15">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Total Assists"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeAssistsName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeReboundsName">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel16">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Total Rebounds"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel17">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Total Blocks"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeBlocksName">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel18">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Total Steals"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeStealsName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimePoints">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeAssists">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeRebounds">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeBlocks">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeSteals">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel19">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="PPG Leader"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel20">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="APG Leader"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel21">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="RPG Leader"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel22">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="BPG Leader"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel23">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="SPG Leader"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimePPGName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeAPGName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeRPGName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeBPGName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeSPGName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimePPG">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="allTimePPGActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeAPG">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeRPG">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeBPG">
+            </Component>
+            <Component class="javax.swing.JTextField" name="allTimeSPG">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel24">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ALL TIME LEADERS"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="allTimeTeams">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="allTimeTeamsActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel25">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Select Team"/>
               </Properties>
             </Component>
           </SubComponents>
