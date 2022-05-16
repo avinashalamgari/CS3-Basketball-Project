@@ -79,9 +79,7 @@ public class MainRunner {
                  }
                  //System.out.println(z.getYearPlayed() + " " + z.teamsPlayed.size());
              }
-             
-             
-             
+
          }
     }
     

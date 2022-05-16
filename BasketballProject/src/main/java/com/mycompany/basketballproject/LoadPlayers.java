@@ -47,12 +47,13 @@ public final class LoadPlayers {
         
     }
     //Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
-    //String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
-    String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
+    String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
+    String alternateFile = "dat/NBA.txt";
+    //String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
     public final void loadPlayers() throws FileNotFoundException, IOException {
-        int startIndexForSubstring = 53; // 53 for win and 45 on mac
+        int startIndexForSubstring = 4; // 53 for win and 45 on mac
         
-        BufferedReader br = new BufferedReader(new FileReader(statsFile));  
+        BufferedReader br = new BufferedReader(new FileReader(alternateFile));  
         String line = null;  
         while ((line = br.readLine()) != null) {
             int fileYear = Integer.parseInt(line.substring(startIndexForSubstring, startIndexForSubstring+4)); 
