@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeMap;
@@ -28,20 +30,27 @@ public final class LoadPlayers {
     Set<String> teamSet = new HashSet<>();
     TreeMap<String, String> allTeamsMap = new TreeMap();
     AllTimeLeaders allTimeLeaders;
+    TreeMap<Integer, Integer> gamesPlayedMap = new TreeMap();
+    TreeMap<Integer, String> leagueChampsByYearMap = new TreeMap();
+    ArrayList<NBAYears> nbaYears = new ArrayList<>();
 
     public LoadPlayers() throws FileNotFoundException, IOException {
         loadTeams();
+        loadGamesPlayed();
+        loadNBAChamps();
         loadPlayers();
         setYearlyStats();
         setTeamInfoByYearStats();
         setAllTimeStats();
+        setNBAYears();
+        sortNBAYearsData();
         
     }
     //Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
-    String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
-    //String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
+    //String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
+    String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
     public final void loadPlayers() throws FileNotFoundException, IOException {
-        int startIndexForSubstring = 45; // 53 for win and 45 on mac
+        int startIndexForSubstring = 53; // 53 for win and 45 on mac
         
         BufferedReader br = new BufferedReader(new FileReader(statsFile));  
         String line = null;  
@@ -271,7 +280,7 @@ public final class LoadPlayers {
             }
             
         }
-        tempTeamByYear = new TeamByYear(teamAcronym, allTeamsMap.get(teamAcronym), fileYear);
+        tempTeamByYear = new TeamByYear(teamAcronym, allTeamsMap.get(teamAcronym), fileYear, gamesPlayedMap.get(fileYear));
         allTeamsByYear.add(tempTeamByYear);
         return tempTeamByYear;
         
@@ -318,6 +327,95 @@ public final class LoadPlayers {
         allTeamsMap.put("CHA", "Charlotte Bobcats");
         allTeamsMap.put("IND", "Indiana Pacers");
         
+    }
+    
+    public void loadGamesPlayed(){
+        gamesPlayedMap.put(1980, 82);
+        gamesPlayedMap.put(1981, 82);
+        gamesPlayedMap.put(1982, 82);
+        gamesPlayedMap.put(1983, 82);
+        gamesPlayedMap.put(1984, 82);
+        gamesPlayedMap.put(1985, 82);
+        gamesPlayedMap.put(1986, 82);
+        gamesPlayedMap.put(1987, 82);
+        gamesPlayedMap.put(1988, 82);
+        gamesPlayedMap.put(1989, 82);
+        gamesPlayedMap.put(1990, 82);
+        gamesPlayedMap.put(1991, 82);
+        gamesPlayedMap.put(1992, 82);
+        gamesPlayedMap.put(1993, 82);
+        gamesPlayedMap.put(1994, 82);
+        gamesPlayedMap.put(1995, 82);
+        gamesPlayedMap.put(1996, 82);
+        gamesPlayedMap.put(1997, 82);
+        gamesPlayedMap.put(1998, 50);
+        gamesPlayedMap.put(1999, 82);
+        gamesPlayedMap.put(2000, 82);
+        gamesPlayedMap.put(2001, 82);
+        gamesPlayedMap.put(2002, 82);
+        gamesPlayedMap.put(2003, 82);
+        gamesPlayedMap.put(2004, 82);
+        gamesPlayedMap.put(2005, 82);
+        gamesPlayedMap.put(2006, 82);
+        gamesPlayedMap.put(2007, 82);
+        gamesPlayedMap.put(2008, 82);
+        gamesPlayedMap.put(2009, 82);
+        gamesPlayedMap.put(2010, 82);
+        gamesPlayedMap.put(2011, 66);
+        gamesPlayedMap.put(2012, 82);
+        gamesPlayedMap.put(2013, 82);
+        gamesPlayedMap.put(2014, 82);
+        gamesPlayedMap.put(2015, 82);
+        gamesPlayedMap.put(2016, 82);
+        gamesPlayedMap.put(2017, 82);
+        gamesPlayedMap.put(2018, 82);
+        gamesPlayedMap.put(2019, 75);
+        gamesPlayedMap.put(2020, 72);
+        gamesPlayedMap.put(2021, 82);
+    }
+    
+    public void loadNBAChamps(){
+        leagueChampsByYearMap.put(1980, "Boston Celtics");
+        leagueChampsByYearMap.put(1981, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(1982, "Philadelphia 76ers");
+        leagueChampsByYearMap.put(1983, "Boston Celtics");
+        leagueChampsByYearMap.put(1984, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(1985, "Boston Celtics");
+        leagueChampsByYearMap.put(1986, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(1987, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(1988, "Detroit Pistons");
+        leagueChampsByYearMap.put(1989, "Detroit Pistons");
+        leagueChampsByYearMap.put(1990, "Chicago Bulls");
+        leagueChampsByYearMap.put(1991, "Chicago Bulls");
+        leagueChampsByYearMap.put(1992, "Chicago Bulls");
+        leagueChampsByYearMap.put(1993, "Houston Rockets");
+        leagueChampsByYearMap.put(1994, "Houston Rockets");
+        leagueChampsByYearMap.put(1995, "Chicago Bulls");
+        leagueChampsByYearMap.put(1996, "Chicago Bulls");
+        leagueChampsByYearMap.put(1997, "Chicago Bulls");
+        leagueChampsByYearMap.put(1998, "San Antonio Spurs");
+        leagueChampsByYearMap.put(1999, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(2000, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(2001, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(2002, "San Antonio Spurs");
+        leagueChampsByYearMap.put(2003, "Detroit Pistons");
+        leagueChampsByYearMap.put(2004, "San Antonio Spurs");
+        leagueChampsByYearMap.put(2005, "Miami Heat");
+        leagueChampsByYearMap.put(2006, "San Antonio Spurs");
+        leagueChampsByYearMap.put(2007, "Boston Celtics");
+        leagueChampsByYearMap.put(2008, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(2009, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(2010, "Dallas Mavericks");
+        leagueChampsByYearMap.put(2011, "Miami Heat");
+        leagueChampsByYearMap.put(2012, "Miami Heat");
+        leagueChampsByYearMap.put(2013, "San Antonio Spurs");
+        leagueChampsByYearMap.put(2014, "Golden State Warriors");
+        leagueChampsByYearMap.put(2015, "Cleveland Cavaliers");
+        leagueChampsByYearMap.put(2016, "Golden State Warriors");
+        leagueChampsByYearMap.put(2017, "Golden State Warriors");
+        leagueChampsByYearMap.put(2018, "Toronto Raptors");
+        leagueChampsByYearMap.put(2019, "Los Angeles Lakers");
+        leagueChampsByYearMap.put(2020, "Milwaukee Bucks");
     }
     
     public void setYearlyStats() {
@@ -398,5 +496,35 @@ public final class LoadPlayers {
             z.setHighestSPGPlayer();
             
         }
+    }
+    
+    public void setNBAYears(){
+        for(TeamByYear x : this.allTeamsByYear){
+            NBAYears tempNBAYear;
+            tempNBAYear = getNBAYear(x.getTeamYear());
+            tempNBAYear.setTeamsPlayed(x);
+        }
+    }
+    
+    public void sortNBAYearsData(){
+        for(NBAYears x : this.nbaYears){
+            x.teamsPlayed.sort(Comparator.comparing(a -> a.getTeamAverage()));
+            Collections.reverse(x.teamsPlayed);
+        }
+        
+        
+    }
+    
+    public NBAYears getNBAYear(int fileYear){
+        NBAYears tempNBAYear;
+        for(NBAYears x : this.nbaYears){
+            if (x.getYearPlayed() == fileYear){
+                return x;
+            }
+            
+        }
+        tempNBAYear = new NBAYears( fileYear);
+        nbaYears.add(tempNBAYear);
+        return tempNBAYear;
     }
 }

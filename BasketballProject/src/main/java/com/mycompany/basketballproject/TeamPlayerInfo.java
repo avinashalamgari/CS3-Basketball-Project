@@ -103,9 +103,7 @@ public class TeamPlayerInfo {
         int rebounds = 0;
         for(PlayerStats x : this.playerStats){
             rebounds += x.getTotalReboundsMade();
-            if(x.getPlayerID().equals("rodmade01") && x.getTeamName().equals("CHI")){
-                System.out.println(x.getTotalReboundsMade() + " " + x.getGamesPlayed());
-            }
+            
         }
         this.totalRebounds = rebounds;
     }

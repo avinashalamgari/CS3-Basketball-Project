@@ -35,12 +35,16 @@ public class TeamByYear {
     private double cAverage = 0;
     private double teamAverage = 0;
     
+    public int totalTeamPoints = 0;
+    public int totalGamesPlayed = 0;
+    
     
 
-    public TeamByYear(String teamAcronym, String teamName, int teamYear) {
+    public TeamByYear(String teamAcronym, String teamName, int teamYear, int totalGamesPlayed) {
         this.teamAcronym = teamAcronym;
         this.teamName = teamName;
         this.teamYear = teamYear;
+        this.totalGamesPlayed = totalGamesPlayed;
     }
     
     public void addPlayerStats(PlayerStats playerStat){
@@ -303,7 +307,11 @@ public class TeamByYear {
     
     public void setAverageOfPlayers(){
         double tempAverage = 0;
-        for(PlayerStats x : this.playerStats){        
+        for(PlayerStats x : this.playerStats){
+            this.totalTeamPoints += x.getTotalPointsScored();
+            if(x.getGamesPlayed() < 15){
+                continue;
+            }
             tempAverage = x.getPoints()/x.getMinutesPlayed();
             if (tempAverage > 0) {
                 this.playerAverages.add(tempAverage);
@@ -313,22 +321,26 @@ public class TeamByYear {
     }
     
     public void setTeamAverage() {
-        Double tempAvg=  0.0;
-        int averageOfPlayers = 13;
-        Collections.sort(this.playerAverages, Collections.reverseOrder());
-        //System.out.println(this.teamYear + this.teamAcronym + this.playerAverages.size());
-        
-        if(this.playerAverages.size() < averageOfPlayers){
-            for (Double avg : this.playerAverages){
-                tempAvg += avg;
-            }
-            this.teamAverage = tempAvg/this.playerAverages.size();
-        } else{
-            for ( int i = 0; i < 12; i++){ 
-                tempAvg += this.playerAverages.get(i);
-            }
-            this.teamAverage = tempAvg/averageOfPlayers;
-        }
+//        Double tempAvg=  0.0;
+//        int numberOfPlayers = 12;
+//        Collections.sort(this.playerAverages, Collections.reverseOrder());
+//        //System.out.println(this.teamYear + this.teamAcronym + this.playerAverages.size());
+//        
+//        if(this.playerAverages.size() < numberOfPlayers){
+//            for (Double avg : this.playerAverages){
+//                tempAvg += avg;
+//            }
+//            this.teamAverage = tempAvg/this.playerAverages.size();
+//        } else{
+//            for ( int i = 0; i < 12; i++){ 
+//                tempAvg += this.playerAverages.get(i);
+//            }
+//            this.teamAverage = tempAvg/numberOfPlayers;
+//        }
+          double tempAvg = (double)(this.totalTeamPoints * 1.0/ this.totalGamesPlayed);
+          
+
+          this.teamAverage = Math.round(tempAvg * 100.0) / 100.0;
     }
 
     public double getTeamAverage() {

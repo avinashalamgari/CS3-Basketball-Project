@@ -70,10 +70,18 @@ public class MainRunner {
          }
          System.out.println("Name and score of player: " + tempPlayer.getPlayerName() + " " + tempPlayer.getTotalRebounds());
          
-         for(TeamByYear y : loadPlayers.allTeamsByYear){
-            if (y.getTeamYear() == 2020){
-                System.out.println(y.getTeamAverage()*240 + " " + y.getTeamName() + " " + y.getTeamYear());
-            }
+        
+         
+         for(NBAYears z : loadPlayers.nbaYears){
+             if(z.getYearPlayed() == 2021){
+                 for(TeamByYear x : z.teamsPlayed){
+                     System.out.println("Team and Score: " + x.teamName + " " + x.getTeamAverage());
+                 }
+                 //System.out.println(z.getYearPlayed() + " " + z.teamsPlayed.size());
+             }
+             
+             
+             
          }
     }
     

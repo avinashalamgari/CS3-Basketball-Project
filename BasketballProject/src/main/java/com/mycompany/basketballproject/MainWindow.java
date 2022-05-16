@@ -124,6 +124,8 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         predictionTable = new javax.swing.JTable();
+        jLabel26 = new javax.swing.JLabel();
+        avgPredictionField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -473,21 +475,32 @@ public class MainWindow extends javax.swing.JFrame {
         predictionTable.setShowGrid(true);
         jScrollPane1.setViewportView(predictionTable);
 
+        jLabel26.setText("AVERAGE PREDICTION PERCENT");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addGap(18, 18, 18)
+                        .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prediction", jPanel4);
@@ -624,6 +637,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> allTimeTeams;
     private javax.swing.JTextField apg;
     private javax.swing.JTextField apgName;
+    private javax.swing.JTextField avgPredictionField;
     private javax.swing.JTextField bpg;
     private javax.swing.JTextField bpgName;
     private javax.swing.JLabel jLabel1;
@@ -644,6 +658,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -857,18 +872,59 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     public void loadPredictionTable(){
+        String tempYear;
+        String tempChamp;
+        int tempRank;
+        String tempPredict;
+        int totalTeams = 0;
+        double averagePrediction = 0.0;
         DefaultTableModel tableModel = (DefaultTableModel) predictionTable.getModel();
         tableModel.setRowCount(0);
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+        for(int i = 1980; i < 2021; i++){
+            tempYear = (Integer.toString(i) + "-" + Integer.toString(i+1));
+            tempChamp = playerData.leagueChampsByYearMap.get(i);
+            tempRank = 0;
+            tempPredict = "predict";
+            Object[] row = new Object[4];
+            int scoringRank = 0;
+            for(NBAYears x : playerData.nbaYears){
+                if(x.getYearPlayed() == i){
+                    totalTeams = x.teamsPlayed.size();
+                    
+                    for(TeamByYear y : x.teamsPlayed){
+                        if(y.teamName.equals(tempChamp)){
+                            tempRank = scoringRank + 1;
+                            // System.out.println("Scoring position was: " + tempYear + " position is " + scoringRank);
+                        }
+                        scoringRank++;
+                    }
+                }
+            }
+            System.out.println(totalTeams);
+            System.out.println(tempRank);
+            double predict = ((double)((100 * 1.0/totalTeams) * (totalTeams - tempRank)));
+            System.out.println("Prediction value is: " + predict);
+            predict = Math.round(predict * 100.0) / 100.0;
+            averagePrediction += predict;
+            row[0] = tempYear;
+            row[1] = tempChamp;
+            row[2] = tempRank;
+            row[3] = Double.toString(predict);
+            tableModel.addRow(row);
+        }
+        averagePrediction = averagePrediction * 1.0 / playerData.nbaYears.size();
+        averagePrediction = Math.round(averagePrediction * 100.0) / 100.0;
+        avgPredictionField.setText(Double.toString(averagePrediction));
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
         
     }
 }
