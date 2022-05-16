@@ -136,7 +136,7 @@
                                       <Component id="apgName" min="-2" pref="143" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="unrelated" pref="54" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" pref="87" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="ppg" alignment="0" pref="60" max="32767" attributes="0"/>
                                   <Component id="rpg" alignment="0" max="32767" attributes="0"/>
@@ -144,7 +144,7 @@
                                   <Component id="bpg" max="32767" attributes="0"/>
                                   <Component id="spg" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="53" max="32767" attributes="0"/>
+                              <EmptySpace pref="86" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -159,7 +159,7 @@
                                       <Component id="ppgName" min="-2" pref="143" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="57" max="32767" attributes="0"/>
+                              <EmptySpace pref="126" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -424,7 +424,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="allTimeAPGName" alignment="0" pref="142" max="32767" attributes="0"/>
+                                  <Component id="allTimeAPGName" alignment="0" pref="143" max="32767" attributes="0"/>
                                   <Component id="allTimeRPGName" alignment="0" max="32767" attributes="0"/>
                                   <Component id="allTimeBPGName" alignment="0" max="32767" attributes="0"/>
                                   <Component id="allTimeSPGName" alignment="0" max="32767" attributes="0"/>
@@ -432,7 +432,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="allTimeBPG" alignment="1" pref="142" max="32767" attributes="0"/>
+                                  <Component id="allTimeBPG" alignment="1" pref="144" max="32767" attributes="0"/>
                                   <Component id="allTimeAPG" max="32767" attributes="0"/>
                                   <Component id="allTimePPG" max="32767" attributes="0"/>
                                   <Component id="allTimeRPG" alignment="0" max="32767" attributes="0"/>
