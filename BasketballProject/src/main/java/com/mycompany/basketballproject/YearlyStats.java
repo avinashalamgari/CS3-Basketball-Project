@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class YearlyStats {
     private int yearPlayed;
+    // creates a PlayerStats ArrayList<>() which stores all the players for a given year
     ArrayList<PlayerStats> playerStats = new ArrayList<>();
     // points, ppg, assists, apg, rebounds, rpg, blocks, bpg, steals, spg
 

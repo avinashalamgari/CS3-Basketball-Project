@@ -27,6 +27,7 @@ public final class LoadPlayers {
     ArrayList<TeamInfo> allTeamsInfo = new ArrayList<>();
     ArrayList<TeamByYear> allTeamsByYear = new ArrayList<>();
     TreeMap<Integer, TreeSet<String>> allYearAndTeams = new TreeMap();
+    // stores the unique acronym of teams from 1980-present
     Set<String> teamSet = new HashSet<>();
     TreeMap<String, String> allTeamsMap = new TreeMap();
     AllTimeLeaders allTimeLeaders;
@@ -35,37 +36,42 @@ public final class LoadPlayers {
     ArrayList<NBAYears> nbaYears = new ArrayList<>();
 
     public LoadPlayers() throws FileNotFoundException, IOException {
+        // loads the team name and their repsective acronym
         loadTeams();
+        // loads the number of games player per season in a map
         loadGamesPlayed();
+        // loads the team that won the championship per year in a map
         loadNBAChamps();
+        // loads all the players and their individual stats per season over 41 years
         loadPlayers();
+        // for these next 3 
         setYearlyStats();
         setTeamInfoByYearStats();
         setAllTimeStats();
         setNBAYears();
+        // sorts teams high to low based on getWeightedAverage().
         sortNBAYearsData();
         
     }
-    //Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt
-    String statsFile = "/Users/husker@us.ibm.com/Documents/Avi Tests/nba.txt";
-    String alternateFile = "dat/NBA.txt";
-    //String statsFile = "C:\\Users\\User\\Documents\\NBA Stats\\csv files\\NBA.txt";
+    
+    String statsFile = "dat/NBA.txt";
     public final void loadPlayers() throws FileNotFoundException, IOException {
-        int startIndexForSubstring = 4; // 53 for win and 45 on mac
+        // we loop through the NBA.txt file which contains the locations of 
+        // the csv files for all 41 years of data and the while looop reads each line
+        // and sends it to the csv read method. after the loop, we update the player points
+        // using the data from the objects created.
+        int startIndexForSubstring = 4; 
         
-        BufferedReader br = new BufferedReader(new FileReader(alternateFile));  
+        BufferedReader br = new BufferedReader(new FileReader(statsFile));  
         String line = null;  
         while ((line = br.readLine()) != null) {
             int fileYear = Integer.parseInt(line.substring(startIndexForSubstring, startIndexForSubstring+4)); 
-//            System.out.println("The year of file is " + fileYear);
+
             csvRead(line, fileYear);
-//            System.out.println("Processed file" + line);
+
    
         } 
-//        String tempSeasonFile = "/Users/husker@us.ibm.com/Downloads/2001-2002.csv";
-//        
-//        csvRead(tempSeasonFile);
-//        
+
         updatePlayerPoints();
     }
     
@@ -82,7 +88,10 @@ public final class LoadPlayers {
                         firstLine = false;
                         continue;
                     }
+                    // all csv files are comma delimited
                     tempArr = line.split(",");
+                    // splits the first field with the backslash to get the name and the player ID
+                    // from here, we assign all the unique attributes to the stats from the csv
                     String[] tempPlayerName = tempArr[1].split("\\\\");
                     String playerName = tempPlayerName[0];
                     String playerID = tempPlayerName[1];
@@ -114,9 +123,12 @@ public final class LoadPlayers {
                     Double points = ParseDouble(tempArr[29]);
                     
                     if (teamName.equals("TOT")){
+                        // a player could have been traded mid season
+                        // hence TOT (two other teams). we ignore TOT
+                        // stats because we want individual team stats
                         continue;
                     }
-                    
+                    // for every occurence of a stat, we create a PlayerStats object
                     PlayerStats tempPlayerStats;
                     tempPlayerStats = new PlayerStats( 
                             playerID,
@@ -149,20 +161,26 @@ public final class LoadPlayers {
                             points,
                             playerName
                     );
+                    // we are creating an object for each unique player and this
+                    // is differentiated with their playerID. we append the playerStat
+                    // to that player for all the years he played
                     PlayerInfo tempPlayer;
                     tempPlayer = getPlayerInfo(playerID, playerName);
                     tempPlayer.addPlayerStats(tempPlayerStats);
-                    
+                    // creates an object for each year and stores the player for each year
                     YearlyStats tempYear;
                     tempYear = getYearInfo(fileYear);
                     tempYear.addPlayerStats(tempPlayerStats);
                     
                     teamSet.add(teamName);
+                    // creates an object for the team and collects all the playerStats that played for that team
+                    // this is for every player that played for the team across the 41 years
                     TeamInfo tempTeamInfo;
                     tempTeamInfo = getTeamInfo(teamName);
                     tempTeamInfo.addPlayerStats(tempPlayerStats);
                     tempTeamInfo.setYearsPlayed(fileYear);
-                    
+                    // same as above except for the fact that TeamByYear has playerStats for the players that
+                    // played for that team in that specific season
                     TeamByYear tempTeamByYear;
                     tempTeamByYear = getTeamByYearinfo(teamName, fileYear);
                     tempTeamByYear.addPlayerStats(tempPlayerStats);
@@ -192,6 +210,9 @@ public final class LoadPlayers {
     }
     
     public double ParseDouble(String strNumber) {
+        // some players had blank values in certain categories
+        // this method converts the blanks to 0 else it converts the 
+        // the string value to a double
         if (strNumber != null && strNumber.length() > 0) {
             try {
                 return Double.parseDouble(strNumber);
@@ -203,7 +224,8 @@ public final class LoadPlayers {
     }
     
     public void updatePlayerPoints(){
-        
+        // excel sheets don't give total stats for a player but rather stats per game
+        // we loop through all the PlayerInfo that we collected
         for(PlayerInfo tempPlayer : allPlayers){
             for(PlayerStats tempPlayerStat : tempPlayer.playerStats){
                 tempPlayerStat.updateTotalPoints();
@@ -228,10 +250,14 @@ public final class LoadPlayers {
     }
     
     public PlayerInfo getPlayerInfo(String playerID, String playerName){
+         // if a playerID already exists we return the player object
+         // else we create a new player object and add it to the allPlayers ArrayList<>()
+        
         PlayerInfo tempPlayerInfo;
         
         for(PlayerInfo x : allPlayers){
             if(x.getPlayerID().equals(playerID)){
+               
                 return x;
             }
         }
@@ -287,6 +313,9 @@ public final class LoadPlayers {
         
     }
     public void loadTeams() {
+        // adds team names and their acronyms. the acronym serves as the key for the team
+        // special exceptions: charlotte hornets were renamed twice, NOK is for the hornets but K means katrina
+        // since they were displaced after Hurrican Katrina in 2005
         allTeamsMap.put("CHH", "Charlotte Hornets (Old)");
         allTeamsMap.put("VAN", "Vancouver Grizzlies");
         allTeamsMap.put("UTA", "Utah Jazz");
@@ -331,6 +360,11 @@ public final class LoadPlayers {
     }
     
     public void loadGamesPlayed(){
+        // in a typical NBA season, teams play a total of 82 games
+        // special exceptions were NBA lockouts in 1998 and 2011
+        // and a reduced number of games due to COVID-19 in 2019 and 2020.
+        // we attribute the number of games to a season
+        // and add the values to the gamesPlayedMap
         gamesPlayedMap.put(1980, 82);
         gamesPlayedMap.put(1981, 82);
         gamesPlayedMap.put(1982, 82);
@@ -376,6 +410,7 @@ public final class LoadPlayers {
     }
     
     public void loadNBAChamps(){
+        // attributes champion to a year and adds it to the leagueChampsByYearMap
         leagueChampsByYearMap.put(1980, "Boston Celtics");
         leagueChampsByYearMap.put(1981, "Los Angeles Lakers");
         leagueChampsByYearMap.put(1982, "Philadelphia 76ers");
@@ -420,6 +455,7 @@ public final class LoadPlayers {
     }
     
     public void setYearlyStats() {
+        // loops through all the playerStats for that year and sets the highest for each category
         for(YearlyStats x: this.allYearlyStats){
             x.setHighestReboundsPlayer();
             x.setHighestPointsPlayer();
@@ -435,6 +471,7 @@ public final class LoadPlayers {
     }
     
     public void setTeamInfoByYearStats() {
+        // loops through allTeamsByYear and sets the highest for each category
         for(TeamByYear x: this.allTeamsByYear){
             x.setHighestReboundsPlayer();
             x.setHighestPointsPlayer();
@@ -452,11 +489,18 @@ public final class LoadPlayers {
             x.setAveragePowerForward();
             x.setAverageCenter();
             x.setAverageOfPlayers();
+            x.setTotalTeamPoints();
+            x.setTotalTeamAssists();
+            x.setTotalTeamRebounds();
+            x.setTotalTeamBlocks();
+            x.setTotalTeamSteals();
             x.setTeamAverage();
+            x.setWeightedAverage();
         }
     }
     
     public void setAllTimeStats(){
+        // loops through 
         AllTimeLeaders allTime = new AllTimeLeaders();
         allTime.setAllStats(this.allPlayers);
         this.allTimeLeaders = allTime;
@@ -508,8 +552,9 @@ public final class LoadPlayers {
     }
     
     public void sortNBAYearsData(){
+        // according to our calculated average, we sort from highest to lowest who was the "best" team overall for that season
         for(NBAYears x : this.nbaYears){
-            x.teamsPlayed.sort(Comparator.comparing(a -> a.getTeamAverage()));
+            x.teamsPlayed.sort(Comparator.comparing(a -> a.getWeightedAverage()));
             Collections.reverse(x.teamsPlayed);
         }
         
@@ -520,10 +565,12 @@ public final class LoadPlayers {
         NBAYears tempNBAYear;
         for(NBAYears x : this.nbaYears){
             if (x.getYearPlayed() == fileYear){
+                // if the year is existing return the value
                 return x;
             }
             
         }
+        // else create a new object for the year
         tempNBAYear = new NBAYears( fileYear);
         nbaYears.add(tempNBAYear);
         return tempNBAYear;

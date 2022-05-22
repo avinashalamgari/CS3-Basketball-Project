@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author User
  */
 public class AllTimeLeaders {
+    // this class stores the playerInfo for the all time high in each category
     private PlayerInfo highestPointsPlayer;
     private PlayerInfo highestAssistsPlayer;
     private PlayerInfo highestReboundsPlayer;
@@ -33,6 +34,7 @@ public class AllTimeLeaders {
     }
 
     public void setHighestPointsPlayer(ArrayList<PlayerInfo> allPlayers) {
+        // loops through allPlayers and sets the highest players
         PlayerInfo tempPlayer = null;
          int totalPoints = 0;
          for(PlayerInfo x : allPlayers){
@@ -50,7 +52,7 @@ public class AllTimeLeaders {
     public PlayerInfo getHighestAssistsPlayer() {
         return highestAssistsPlayer;
     }
-
+    
     public void setHighestAssistsPlayer(ArrayList<PlayerInfo> allPlayers) {
         PlayerInfo tempPlayer = null;
          int totalAssists = 0;

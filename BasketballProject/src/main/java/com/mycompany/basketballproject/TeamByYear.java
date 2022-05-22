@@ -36,7 +36,14 @@ public class TeamByYear {
     private double teamAverage = 0;
     
     public int totalTeamPoints = 0;
+    public int totalTeamAssists = 0;
+    public int totalTeamRebounds = 0;
+    public int totalTeamBlocks = 0;
+    public int totalTeamSteals = 0;
     public int totalGamesPlayed = 0;
+    
+    public double weightedAverage = 0;
+    private double[] weightedSet = {0.4, 0.15, 0.15, 0.15, 0.15};
     
     
 
@@ -308,7 +315,7 @@ public class TeamByYear {
     public void setAverageOfPlayers(){
         double tempAverage = 0;
         for(PlayerStats x : this.playerStats){
-            this.totalTeamPoints += x.getTotalPointsScored();
+            //this.totalTeamPoints += x.getTotalPointsScored();
             if(x.getGamesPlayed() < 15){
                 continue;
             }
@@ -319,6 +326,65 @@ public class TeamByYear {
         }
         
     }
+
+    public int getTotalTeamPoints() {
+        return totalTeamPoints;
+    }
+
+    public void setTotalTeamPoints() {
+        this.totalTeamPoints = 0;
+        for(PlayerStats x : this.playerStats){
+            this.totalTeamPoints += x.getTotalPointsScored();
+        }
+    }
+    
+    
+
+    public int getTotalTeamAssists() {
+        return totalTeamAssists;
+    }
+
+    public void setTotalTeamAssists() {
+        this.totalTeamAssists = 0;
+        for(PlayerStats x : this.playerStats){
+            this.totalTeamAssists += x.getTotalAssistsMade();
+        }
+    }
+
+    public int getTotalTeamRebounds() {
+        return totalTeamRebounds;
+    }
+
+    public void setTotalTeamRebounds() {
+        this.totalTeamRebounds = 0;
+        for(PlayerStats x : this.playerStats){
+            this.totalTeamRebounds += x.getTotalReboundsMade();
+        }
+    }
+
+    public int getTotalTeamBlocks() {
+        return totalTeamBlocks;
+    }
+
+    public void setTotalTeamBlocks() {
+        this.totalTeamBlocks = 0;
+        for(PlayerStats x : this.playerStats){
+            this.totalTeamBlocks += x.getTotalBlocksMade();
+        }
+    }
+
+    public int getTotalTeamSteals() {
+        return totalTeamSteals;
+    }
+
+    public void setTotalTeamSteals() {
+        this.totalTeamSteals = 0;
+        for(PlayerStats x : this.playerStats){
+            this.totalTeamSteals += x.getTotalStealsMade();
+        }
+    }
+    
+    
     
     public void setTeamAverage() {
 //        Double tempAvg=  0.0;
@@ -346,5 +412,17 @@ public class TeamByYear {
     public double getTeamAverage() {
         return teamAverage;
     }
+
+    public double getWeightedAverage() {
+        return weightedAverage;
+    }
+
+    public void setWeightedAverage() {
+        double tempAvg = 0;
+        tempAvg = (double) ((this.weightedSet[0] * this.getTotalTeamPoints() + this.weightedSet[1] * this.getTotalTeamAssists() + this.weightedSet[2] * this.getTotalTeamRebounds() + this.weightedSet[3] * this.getTotalTeamBlocks() + this.weightedSet[4] * this.getTotalTeamSteals()) / this.totalGamesPlayed);
+        this.weightedAverage =  Math.round(tempAvg * 100.0) / 100.0;
+    }
+    
+    
     
 }

@@ -12,6 +12,7 @@ import java.util.Collections;
 
 
 public class MainRunner {
+    // tester class for MainWindow
     
     public static ArrayList<Integer> nbaYears = new ArrayList();
     //hello world
@@ -60,27 +61,28 @@ public class MainRunner {
 //            System.out.println("The highest rebounder total was " + " " + x.getHighestReboundsPlayer().getPlayerName() + " " + x.getHighestReboundsPlayer().getTotalReboundsMade());
 //            
 //        }
-         PlayerInfo tempPlayer = null;
-         int totalPoints = 0;
-         for(PlayerInfo x : loadPlayers.allPlayers){
-             if(x.getTotalRebounds() > totalPoints){
-                 tempPlayer = x;
-                 totalPoints = x.getTotalRebounds();
-             }
-         }
-         System.out.println("Name and score of player: " + tempPlayer.getPlayerName() + " " + tempPlayer.getTotalRebounds());
-         
-        
-         
+//         PlayerInfo tempPlayer = null;
+//         int totalPoints = 0;
+//         for(PlayerInfo x : loadPlayers.allPlayers){
+//             if(x.getTotalRebounds() > totalPoints){
+//                 tempPlayer = x;
+//                 totalPoints = x.getTotalRebounds();
+//             }
+//         }
+//         System.out.println("Name and score of player: " + tempPlayer.getPlayerName() + " " + tempPlayer.getTotalRebounds());
+//         
+//        
+//         
          for(NBAYears z : loadPlayers.nbaYears){
              if(z.getYearPlayed() == 2021){
                  for(TeamByYear x : z.teamsPlayed){
-                     System.out.println("Team and Score: " + x.teamName + " " + x.getTeamAverage());
+                     System.out.println("Team and Score: " + x.teamName + " " + x.getWeightedAverage());
                  }
                  //System.out.println(z.getYearPlayed() + " " + z.teamsPlayed.size());
              }
 
          }
+        
     }
     
     

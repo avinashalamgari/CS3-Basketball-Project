@@ -8,9 +8,11 @@ package com.mycompany.basketballproject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +25,7 @@ public class MainWindow extends javax.swing.JFrame {
      * Creates new form MainWindow
      */
     private LoadPlayers playerData;
+    
     public MainWindow() {
        
         
@@ -37,8 +40,11 @@ public class MainWindow extends javax.swing.JFrame {
          initComponents();
          loadSeasonYears();
          loadAllTimeTeams();
-         //printTeamNames();
          loadPredictionTable();
+         loadRangePredictionTable();
+         loadPlayerStatsTable();
+         
+         
     }
 
     /**
@@ -50,8 +56,24 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        nbaStats = new javax.swing.JTabbedPane();
+        homePage = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        seasonStats = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -87,7 +109,7 @@ public class MainWindow extends javax.swing.JFrame {
         spg = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         teamNames = new javax.swing.JComboBox<>();
-        jPanel3 = new javax.swing.JPanel();
+        allTime = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         allTimePointsName = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -121,13 +143,125 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         allTimeTeams = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        playerStats = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        playerStatsTable = new javax.swing.JTable();
+        searchPlayerField = new javax.swing.JTextField();
+        playerSearchButton = new javax.swing.JButton();
+        prediction = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         predictionTable = new javax.swing.JTable();
         jLabel26 = new javax.swing.JLabel();
         avgPredictionField = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        rangePredictionTable = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel28.setFont(new java.awt.Font("Yu Gothic", 0, 36)); // NOI18N
+        jLabel28.setText("NBA Statistics and Prediction");
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel27.setText("Season Stat Leaders");
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel29.setText("All Time Leaders");
+
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel30.setText("Prediction");
+
+        jLabel34.setFont(new java.awt.Font("Yu Gothic", 0, 24)); // NOI18N
+        jLabel34.setText("DISCLAIMER: All data used came from basketball-reference.com");
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane5.setViewportView(jTextArea2);
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane6.setViewportView(jTextArea3);
+
+        jTextArea4.setColumns(20);
+        jTextArea4.setRows(5);
+        jScrollPane7.setViewportView(jTextArea4);
+
+        javax.swing.GroupLayout homePageLayout = new javax.swing.GroupLayout(homePage);
+        homePage.setLayout(homePageLayout);
+        homePageLayout.setHorizontalGroup(
+            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePageLayout.createSequentialGroup()
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jLabel28)
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel33))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(homePageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(125, 125, 125)
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
+            .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(homePageLayout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(1014, Short.MAX_VALUE)))
+        );
+        homePageLayout.setVerticalGroup(
+            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel33))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel34)
+                        .addGap(60, 60, 60)
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel29)
+                            .addComponent(jLabel30))
+                        .addGap(26, 26, 26)
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addComponent(jLabel31)
+                                .addGap(301, 301, 301)
+                                .addComponent(jLabel32))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(254, Short.MAX_VALUE))
+            .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(homePageLayout.createSequentialGroup()
+                    .addGap(251, 251, 251)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(250, Short.MAX_VALUE)))
+        );
+
+        nbaStats.addTab("Home Page", homePage);
 
         jLabel1.setText("SEASON LEADERS");
 
@@ -145,6 +279,16 @@ public class MainWindow extends javax.swing.JFrame {
 
         totalPointName.setEditable(false);
 
+        totalAssistName.setEditable(false);
+
+        totalReboundName.setEditable(false);
+
+        ppgName.setEditable(false);
+
+        apgName.setEditable(false);
+
+        rpgName.setEditable(false);
+
         seasonYears.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         seasonYears.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,13 +298,41 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel8.setText("Select Team");
 
+        totalPoint.setEditable(false);
+
+        totalAssist.setEditable(false);
+
+        totalRebound.setEditable(false);
+
+        ppg.setEditable(false);
+
+        apg.setEditable(false);
+
+        rpg.setEditable(false);
+
         jLabel9.setText("Total Blocks");
+
+        totalBlockName.setEditable(false);
+
+        totalBlock.setEditable(false);
 
         jLabel10.setText("Total Steals");
 
+        totalStealName.setEditable(false);
+
+        totalSteal.setEditable(false);
+
         jLabel11.setText("BPG Leader");
 
+        bpgName.setEditable(false);
+
+        bpg.setEditable(false);
+
         jLabel12.setText("SPG Leader");
+
+        spgName.setEditable(false);
+
+        spg.setEditable(false);
 
         jLabel14.setText("Select Year");
 
@@ -171,103 +343,103 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout seasonStatsLayout = new javax.swing.GroupLayout(seasonStats);
+        seasonStats.setLayout(seasonStatsLayout);
+        seasonStatsLayout.setHorizontalGroup(
+            seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(seasonStatsLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(seasonStatsLayout.createSequentialGroup()
+                        .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, seasonStatsLayout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addGap(18, 18, 18))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(seasonStatsLayout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(22, 22, 22)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(seasonStatsLayout.createSequentialGroup()
+                                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(9, 9, 9)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(totalReboundName)
                             .addComponent(totalPointName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(totalAssistName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(totalBlockName)
                             .addComponent(totalStealName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(seasonStatsLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(jLabel14)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(seasonStatsLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(totalPoint, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                             .addComponent(totalAssist)
                             .addComponent(totalRebound)
                             .addComponent(totalBlock)
                             .addComponent(totalSteal))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, seasonStatsLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(seasonYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(seasonStatsLayout.createSequentialGroup()
+                        .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(seasonStatsLayout.createSequentialGroup()
+                                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(jLabel12))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(rpgName, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                                     .addComponent(bpgName)
                                     .addComponent(spgName)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(seasonStatsLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
                                 .addComponent(apgName, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 87, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 295, Short.MAX_VALUE)
+                        .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ppg, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                             .addComponent(rpg)
                             .addComponent(apg, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(bpg)
                             .addComponent(spg))
-                        .addContainerGap(86, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(296, Short.MAX_VALUE))
+                    .addGroup(seasonStatsLayout.createSequentialGroup()
+                        .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, seasonStatsLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(47, 47, 47)
                                 .addComponent(teamNames, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, seasonStatsLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(ppgName, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(126, Short.MAX_VALUE))))
+                        .addContainerGap(542, Short.MAX_VALUE))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        seasonStatsLayout.setVerticalGroup(
+            seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(seasonStatsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(seasonYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel14)
                     .addComponent(teamNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel5)
                     .addComponent(totalPointName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,7 +447,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(totalPoint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ppg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel6)
                     .addComponent(totalAssistName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,7 +455,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(totalAssist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(apg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel7)
                     .addComponent(totalReboundName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,36 +463,56 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(totalRebound, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rpg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(totalBlockName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(totalBlock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11)
                         .addComponent(bpgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(bpg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(totalStealName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(totalSteal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(spgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(490, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Season Stat Leaders", jPanel1);
+        nbaStats.addTab("Season Stat Leaders", seasonStats);
 
         jLabel13.setText("Total Points");
 
+        allTimePointsName.setEditable(false);
+
         jLabel15.setText("Total Assists");
+
+        allTimeAssistsName.setEditable(false);
+
+        allTimeReboundsName.setEditable(false);
 
         jLabel16.setText("Total Rebounds");
 
         jLabel17.setText("Total Blocks");
 
+        allTimeBlocksName.setEditable(false);
+
         jLabel18.setText("Total Steals");
+
+        allTimeStealsName.setEditable(false);
+
+        allTimePoints.setEditable(false);
+
+        allTimeAssists.setEditable(false);
+
+        allTimeRebounds.setEditable(false);
+
+        allTimeBlocks.setEditable(false);
+
+        allTimeSteals.setEditable(false);
 
         jLabel19.setText("PPG Leader");
 
@@ -332,11 +524,30 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel23.setText("SPG Leader");
 
+        allTimePPGName.setEditable(false);
+
+        allTimeAPGName.setEditable(false);
+
+        allTimeRPGName.setEditable(false);
+
+        allTimeBPGName.setEditable(false);
+
+        allTimeSPGName.setEditable(false);
+
+        allTimePPG.setEditable(false);
         allTimePPG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 allTimePPGActionPerformed(evt);
             }
         });
+
+        allTimeAPG.setEditable(false);
+
+        allTimeRPG.setEditable(false);
+
+        allTimeBPG.setEditable(false);
+
+        allTimeSPG.setEditable(false);
 
         jLabel24.setText("ALL TIME LEADERS");
 
@@ -349,56 +560,56 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel25.setText("Select Team");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout allTimeLayout = new javax.swing.GroupLayout(allTime);
+        allTime.setLayout(allTimeLayout);
+        allTimeLayout.setHorizontalGroup(
+            allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(allTimeLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(allTimeLayout.createSequentialGroup()
+                        .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addComponent(jLabel16)
                             .addComponent(jLabel17)
                             .addComponent(jLabel18)
                             .addComponent(jLabel15))
                         .addGap(44, 44, 44)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(allTimeBlocksName, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(allTimeStealsName, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(allTimePointsName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(allTimeAssistsName)
                             .addComponent(allTimeReboundsName))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(allTimeAssists, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(allTimePoints, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(allTimeRebounds, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(allTimeBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(allTimeSteals, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(64, 64, 64)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
                             .addComponent(jLabel20)
                             .addComponent(jLabel21)
                             .addComponent(jLabel22)
                             .addComponent(jLabel23))
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(allTimeAPGName, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                            .addComponent(allTimeRPGName)
-                            .addComponent(allTimeBPGName)
-                            .addComponent(allTimeSPGName)
-                            .addComponent(allTimePPGName))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(allTimeBPG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                        .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(allTimeBPGName, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(allTimeRPGName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(allTimeAPGName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(allTimePPGName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(allTimeSPGName))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(allTimeBPG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                             .addComponent(allTimeAPG)
                             .addComponent(allTimePPG)
                             .addComponent(allTimeRPG)
                             .addComponent(allTimeSPG)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(allTimeLayout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addGap(78, 78, 78)
                         .addComponent(jLabel25)
@@ -407,16 +618,16 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        allTimeLayout.setVerticalGroup(
+            allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(allTimeLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(allTimeTeams, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
                 .addGap(25, 25, 25)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(allTimePointsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(allTimePoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -424,7 +635,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(allTimePPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(allTimePPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(allTimeAssistsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(allTimeAssists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
@@ -432,7 +643,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(allTimeAPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addGap(28, 28, 28)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(allTimeReboundsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
                     .addComponent(allTimeRebounds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -440,7 +651,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(allTimeRPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(allTimeRPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(allTimeBlocksName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(allTimeBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -448,18 +659,92 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(allTimeBPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(allTimeBPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(allTimeStealsName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(allTimeSteals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel23)
                         .addComponent(allTimeSPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(allTimeSPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(518, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("All Time Leaders", jPanel3);
+        nbaStats.addTab("All Time Leaders", allTime);
+
+        jLabel37.setText("Search for Players");
+
+        playerStatsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Games Played", "Points", "Assists", "Rebounds", "Blocks", "Steals", "PPG", "APG", "RPG", "BPG", "SPG"
+            }
+        ));
+        playerStatsTable.setShowGrid(true);
+        playerStatsTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(playerStatsTable);
+        playerStatsTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        if (playerStatsTable.getColumnModel().getColumnCount() > 0) {
+            playerStatsTable.getColumnModel().getColumn(0).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(0).setPreferredWidth(250);
+            playerStatsTable.getColumnModel().getColumn(1).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(2).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(3).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(4).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(5).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(6).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(7).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(8).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(9).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(10).setResizable(false);
+            playerStatsTable.getColumnModel().getColumn(11).setResizable(false);
+        }
+
+        searchPlayerField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchPlayerFieldActionPerformed(evt);
+            }
+        });
+
+        playerSearchButton.setText("Search");
+        playerSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playerSearchButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout playerStatsLayout = new javax.swing.GroupLayout(playerStats);
+        playerStats.setLayout(playerStatsLayout);
+        playerStatsLayout.setHorizontalGroup(
+            playerStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(playerStatsLayout.createSequentialGroup()
+                .addComponent(jLabel37)
+                .addGap(30, 30, 30)
+                .addComponent(searchPlayerField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(playerSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1285, Short.MAX_VALUE)
+        );
+        playerStatsLayout.setVerticalGroup(
+            playerStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(playerStatsLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(playerStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(searchPlayerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(playerSearchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+
+        nbaStats.addTab("Player Stats", playerStats);
 
         predictionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -477,65 +762,116 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel26.setText("AVERAGE PREDICTION PERCENT");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        avgPredictionField.setEditable(false);
+
+        rangePredictionTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Rank", "Prediction"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        rangePredictionTable.setShowGrid(true);
+        jScrollPane3.setViewportView(rangePredictionTable);
+        if (rangePredictionTable.getColumnModel().getColumnCount() > 0) {
+            rangePredictionTable.getColumnModel().getColumn(0).setResizable(false);
+            rangePredictionTable.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("This table tells you the percent chance a team has if they are \nranked within these values.");
+        jScrollPane4.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout predictionLayout = new javax.swing.GroupLayout(prediction);
+        prediction.setLayout(predictionLayout);
+        predictionLayout.setHorizontalGroup(
+            predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(predictionLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(predictionLayout.createSequentialGroup()
                         .addComponent(jLabel26)
                         .addGap(18, 18, 18)
-                        .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(182, Short.MAX_VALUE))
+                        .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(89, 89, 89)
+                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        predictionLayout.setVerticalGroup(
+            predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(predictionLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(predictionLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(predictionLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(375, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Prediction", jPanel4);
+        nbaStats.addTab("Prediction", prediction);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 852, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 490, Short.MAX_VALUE))
+                .addComponent(nbaStats, javax.swing.GroupLayout.PREFERRED_SIZE, 1290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 357, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(nbaStats, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void seasonYearsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seasonYearsActionPerformed
+    private void allTimeTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allTimeTeamsActionPerformed
         // TODO add your handling code here:
-        String selectedItem = (String) seasonYears.getSelectedItem();
-        if (selectedItem == null) {
+
+        String selectedItem = (String) allTimeTeams.getSelectedItem();
+        if(selectedItem == null){
+            return;
+        }
+        if(selectedItem.equals("All Teams")){
+            setValuesForAllTimeLeaders();
             return;
         }
 
-        int selectedYear = Integer.parseInt(seasonYears.getItemAt(seasonYears.getSelectedIndex()).substring(0,4));
+        setValuesForAllTimeTeamLeaders(selectedItem);
+    }//GEN-LAST:event_allTimeTeamsActionPerformed
 
-        loadTeamNames(selectedYear);
-        setValuesForSeasonLeaders(selectedYear);
-
-    }//GEN-LAST:event_seasonYearsActionPerformed
+    private void allTimePPGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allTimePPGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_allTimePPGActionPerformed
 
     private void teamNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamNamesActionPerformed
         // TODO add your handling code here:
@@ -558,24 +894,33 @@ public class MainWindow extends javax.swing.JFrame {
         System.out.println("Team Average Score is " + tempTeam.predictedTeamScore());
     }//GEN-LAST:event_teamNamesActionPerformed
 
-    private void allTimePPGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allTimePPGActionPerformed
+    private void seasonYearsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seasonYearsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_allTimePPGActionPerformed
+        String selectedItem = (String) seasonYears.getSelectedItem();
+        if (selectedItem == null) {
+            return;
+        }
 
-    private void allTimeTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allTimeTeamsActionPerformed
+        int selectedYear = Integer.parseInt(seasonYears.getItemAt(seasonYears.getSelectedIndex()).substring(0,4));
+
+        loadTeamNames(selectedYear);
+        setValuesForSeasonLeaders(selectedYear);
+    }//GEN-LAST:event_seasonYearsActionPerformed
+
+    private void searchPlayerFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPlayerFieldActionPerformed
         // TODO add your handling code here:
         
-        String selectedItem = (String) allTimeTeams.getSelectedItem();
-        if(selectedItem == null){
+    }//GEN-LAST:event_searchPlayerFieldActionPerformed
+
+    private void playerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerSearchButtonActionPerformed
+        // TODO add your handling code here:
+        if(searchPlayerField.getText().isBlank()){
+            loadPlayerStatsTable();
             return;
+        } else {
+            loadPlayerStatsTable(searchPlayerField.getText());
         }
-        if(selectedItem.equals("All Teams")){
-            setValuesForAllTimeLeaders();
-            return;
-        }
-        
-        setValuesForAllTimeTeamLeaders(selectedItem);
-    }//GEN-LAST:event_allTimeTeamsActionPerformed
+    }//GEN-LAST:event_playerSearchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -614,6 +959,7 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel allTime;
     private javax.swing.JTextField allTimeAPG;
     private javax.swing.JTextField allTimeAPGName;
     private javax.swing.JTextField allTimeAssists;
@@ -640,6 +986,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextField avgPredictionField;
     private javax.swing.JTextField bpg;
     private javax.swing.JTextField bpgName;
+    private javax.swing.JPanel homePage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -659,23 +1006,47 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTabbedPane nbaStats;
+    private javax.swing.JButton playerSearchButton;
+    private javax.swing.JPanel playerStats;
+    private javax.swing.JTable playerStatsTable;
     private javax.swing.JTextField ppg;
     private javax.swing.JTextField ppgName;
+    private javax.swing.JPanel prediction;
     private javax.swing.JTable predictionTable;
+    private javax.swing.JTable rangePredictionTable;
     private javax.swing.JTextField rpg;
     private javax.swing.JTextField rpgName;
+    private javax.swing.JTextField searchPlayerField;
+    private javax.swing.JPanel seasonStats;
     private javax.swing.JComboBox<String> seasonYears;
     private javax.swing.JTextField spg;
     private javax.swing.JTextField spgName;
@@ -693,6 +1064,7 @@ public class MainWindow extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void loadSeasonYears() {
+        // puts all the years into the comboBox in Season Stat Leaders Panel
         seasonYears.removeAllItems();
         for(int i = 1980; i <= 2021; i++){
             seasonYears.addItem(Integer.toString(i) + "-" + Integer.toString(i+1));
@@ -727,10 +1099,13 @@ public class MainWindow extends javax.swing.JFrame {
         allTimeTeams.addItem("All Teams");
         ArrayList<String> tempTeamNames = new ArrayList<>();
         for(Map.Entry<String, String> entry : playerData.allTeamsMap.entrySet()){
+            // adds the teamNames that is given in the allTeamsMap to the tempTeamNames ArrayList<>()
             tempTeamNames.add(entry.getValue());
         }
+        // based on alphabetical order, we sort the teamNames in the tempTeamNames ArrayList<>()
         Collections.sort(tempTeamNames);
         for(String x : tempTeamNames){
+            // once we're done we add them to the comboBox
             allTimeTeams.addItem(x);
         }
     }
@@ -872,6 +1247,9 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     public void loadPredictionTable(){
+        // we take the year, champion, and their rank based on our weightedAverage
+        // in our average, we give 40% to points and 15% to assists, rebounds, blocks, and steals.
+        // we wanted to give the most weight to the points because that's the deciding factor in all games
         String tempYear;
         String tempChamp;
         int tempRank;
@@ -893,6 +1271,7 @@ public class MainWindow extends javax.swing.JFrame {
                     
                     for(TeamByYear y : x.teamsPlayed){
                         if(y.teamName.equals(tempChamp)){
+                            // loops through the teamRank based on the weightedAverage
                             tempRank = scoringRank + 1;
                             // System.out.println("Scoring position was: " + tempYear + " position is " + scoringRank);
                         }
@@ -900,31 +1279,123 @@ public class MainWindow extends javax.swing.JFrame {
                     }
                 }
             }
-            System.out.println(totalTeams);
-            System.out.println(tempRank);
-            double predict = ((double)((100 * 1.0/totalTeams) * (totalTeams - tempRank)));
-            System.out.println("Prediction value is: " + predict);
+            // this is where we predict how accurate we were using the formula (100/totalTeams) * (totalTeams + 1- tempRank)
+            double predict = ((double)((100 * 1.0/totalTeams) * (totalTeams + 1 - tempRank)));
+            // then we round our prediction percentage
             predict = Math.round(predict * 100.0) / 100.0;
             averagePrediction += predict;
+            // set the rows to each respective value
             row[0] = tempYear;
             row[1] = tempChamp;
             row[2] = tempRank;
             row[3] = Double.toString(predict);
+            // then add the rows to the table
             tableModel.addRow(row);
         }
+        // after we get the prediction value per season, we take the average across the 41 years of data 
+        // and get on average how accurate our model was in predicting the championship
         averagePrediction = averagePrediction * 1.0 / playerData.nbaYears.size();
         averagePrediction = Math.round(averagePrediction * 100.0) / 100.0;
         avgPredictionField.setText(Double.toString(averagePrediction));
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
-//        tableModel.insertRow(0, new Object[] {"1980", "Test", "Test", "Test"});
+
         
     }
+    
+    public void loadRangePredictionTable(){
+        // this is a separate prediction model by range of 5 teams to see how accurate our model was
+        // per range of teams
+        DefaultTableModel tableModel = (DefaultTableModel) rangePredictionTable.getModel();
+        tableModel.setRowCount(0);
+        // we create a list of ranges and their lowest and highest boundaries
+        String[] ranges = {"1-5", "6-10", "11-15", "16-20", "21-25", "26-30"};
+        int[] lowerBoundary = {1, 6, 11, 16, 21, 26};
+        int[] higherBoundary = {5, 10, 15, 20, 25, 30};
+        for(int i = 0; i < 6; i++){
+            // loops through the 6 ranges and adds the ranges to the first column
+            // then adds the percentage in the second column
+            Object[] row = new Object[2];
+            row[0] = ranges[i];
+            row[1] = getRangeWinPercentage(lowerBoundary[i], higherBoundary[i]);
+            tableModel.addRow(row);
+        }
+        
+    }
+    
+    public double getRangeWinPercentage(int lower, int higher){
+        // gets the percentage of how accurate our model is per range of teams
+        double rangePercentage = 0;
+        int count = 0;
+        int valueOfRow = 0;
+//        System.out.println("Total Rows= " + predictionTable.getRowCount());
+        for(int j = 0; j < predictionTable.getRowCount(); j++){
+            valueOfRow = (int) predictionTable.getValueAt(j, 2);
+            //System.out.println("Value of row and actual value " + j + " " + valueOfRow);
+            if(valueOfRow >= lower && valueOfRow <= higher){
+                //System.out.println("(inside if) Value of row and actual value " + j + " " + valueOfRow );
+                count++;
+            }
+        }
+        
+        //System.out.println(lower + " " + higher + " " + count);
+        rangePercentage = count * 100.0 / predictionTable.getRowCount();
+        rangePercentage = Math.round(rangePercentage * 100.0) / 100.0;
+        return rangePercentage;
+    }
+    
+    public void loadPlayerStatsTable(){
+        DefaultTableModel tableModel = (DefaultTableModel) playerStatsTable.getModel();
+        tableModel.setRowCount(0);
+        playerData.allPlayers.sort(Comparator.comparing(a -> a.getPlayerName()));
+         for(PlayerInfo x : playerData.allPlayers){
+            Object[] row = new Object[12];
+            row[0] = x.getPlayerName();
+            row[1] = x.getTotalGamesPlayed();
+            row[2] = x.getTotalPoints();
+            row[3] = x.getTotalAssists();
+            row[4] = x.getTotalRebounds();
+            row[5] = x.getTotalBlocks();
+            row[6] = x.getTotalSteals();
+            row[7] = x.getPpg();
+            row[8] = x.getApg();
+            row[9] = x.getRpg();
+            row[10] = x.getBpg();
+            row[11] = x.getSpg();
+            tableModel.addRow(row);
+            
+         }
+        
+        
+    }
+    
+    public void loadPlayerStatsTable(String textField){
+        // per player we set the individual stats of a player over their entire career
+        DefaultTableModel tableModel = (DefaultTableModel) playerStatsTable.getModel();
+        tableModel.setRowCount(0);
+        playerData.allPlayers.sort(Comparator.comparing(a -> a.getPlayerName()));
+         for(PlayerInfo x : playerData.allPlayers){
+            if(x.getPlayerName().toLowerCase().contains(textField.toLowerCase())){
+                Object[] row = new Object[12];
+                row[0] = x.getPlayerName();
+                row[1] = x.getTotalGamesPlayed();
+                row[2] = x.getTotalPoints();
+                row[3] = x.getTotalAssists();
+                row[4] = x.getTotalRebounds();
+                row[5] = x.getTotalBlocks();
+                row[6] = x.getTotalSteals();
+                row[7] = x.getPpg();
+                row[8] = x.getApg();
+                row[9] = x.getRpg();
+                row[10] = x.getBpg();
+                row[11] = x.getSpg();
+                
+                tableModel.addRow(row);
+            }
+            
+            
+         }
+        
+        
+    }
+    
+    
 }

@@ -24,6 +24,7 @@ public class NBAYears {
     }
 
     public void setTeamsPlayed(TeamByYear teamsPlayed) {
+        // stores the teams that played in the NBA for that given season
         this.teamsPlayed.add(teamsPlayed);
     }
     

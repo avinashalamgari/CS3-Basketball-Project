@@ -13,6 +13,7 @@ import java.util.Set;
 public class TeamInfo {
    String teamAcronym;
    String teamName;
+   // this ArrayList will contain every stastic for every player that ever played for that team
    ArrayList<PlayerStats> playerStats = new ArrayList<>();
    Set<Integer> yearsPlayed = new HashSet<>();
    ArrayList<TeamPlayerInfo> teamPlayerInfo = new ArrayList<>();
