@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
@@ -60,19 +61,22 @@ public class MainWindow extends javax.swing.JFrame {
         nbaStats = new javax.swing.JTabbedPane();
         homePage = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
         seasonStats = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -158,6 +162,18 @@ public class MainWindow extends javax.swing.JFrame {
         rangePredictionTable = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jLabel35 = new javax.swing.JLabel();
+        pointsPrediction = new javax.swing.JTextField();
+        assistsPrediction = new javax.swing.JTextField();
+        reboundsPrediction = new javax.swing.JTextField();
+        blocksPrediction = new javax.swing.JTextField();
+        stealsPrediction = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        predictionButton = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -166,34 +182,74 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel28.setFont(new java.awt.Font("Yu Gothic", 0, 36)); // NOI18N
         jLabel28.setText("NBA Statistics and Prediction");
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel27.setText("Season Stat Leaders");
-
-        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel29.setText("All Time Leaders");
-
-        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel30.setText("Prediction");
-
         jLabel34.setFont(new java.awt.Font("Yu Gothic", 0, 24)); // NOI18N
         jLabel34.setText("DISCLAIMER: All data used came from basketball-reference.com");
 
+        jLabel43.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel43.setText("All Time Leaders");
+
+        jLabel44.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel44.setText("Player Statistics");
+
+        jLabel45.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel45.setText("Season Stat Leaders");
+
+        jLabel46.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel46.setText("Prediction Model");
+
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
+        jTextArea2.setText("Here you can find the lead player for\neach team through the entirety of \nthe NBA. \n\nPick and choose your \nfavorite team and find out the all \ntime leaders with the existing stats \nof total points, assists, rebounds, \nblocks, and steals as well as a per \ngame statistical breakdown for \neach of these leaders! \n");
         jScrollPane5.setViewportView(jTextArea2);
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
+        jTextArea3.setText("From the hundreds of NBA players, \nuse the search bar to find your \nfavorite player and learn their \noverall career stats!\n\nThe player name can be entered\npartially and the results will show\nall the players in the table that\nthe partial name");
         jScrollPane6.setViewportView(jTextArea3);
 
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
+        jTextArea4.setText("Through our very own prediction \nmodel, we looked into a variety of \nstatistics for each team and gave \na percent number of how likely the\nwinners of each NBA finals winner \nwas to win their season based\non team stats for that season. \n\nCustomize how much weight each \nstatistics plays into the overall \nprediction. Check how closely \nseason stats are correlated with \nthe team winners of the season \nand how close the prediction was!");
         jScrollPane7.setViewportView(jTextArea4);
+
+        jTextArea5.setColumns(20);
+        jTextArea5.setRows(5);
+        jTextArea5.setText("Here you can find the lead player on\neach team for categories such as \ntotal points, assists, rebounds,\nblocks, and steals.\n\nYou can find the team lead in\nthese categories for each NBA \nseason! Pick and choose your \nfavorite NBA team or season and \nfind out which of your favorite \nplayers is a season stat leader! \n");
+        jScrollPane8.setViewportView(jTextArea5);
 
         javax.swing.GroupLayout homePageLayout = new javax.swing.GroupLayout(homePage);
         homePage.setLayout(homePageLayout);
         homePageLayout.setHorizontalGroup(
             homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePageLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47))
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(65, 65, 65)))
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30))
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(53, 53, 53)))
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                .addGap(315, 315, 315))))))
             .addGroup(homePageLayout.createSequentialGroup()
                 .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(homePageLayout.createSequentialGroup()
@@ -202,63 +258,51 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGap(83, 83, 83)
                         .addComponent(jLabel33))
                     .addGroup(homePageLayout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(homePageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(homePageLayout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(329, 329, 329)
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(125, 125, 125)
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(56, 56, 56))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(homePageLayout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1014, Short.MAX_VALUE)))
+                    .addGap(135, 135, 135)
+                    .addComponent(jLabel45, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addGap(982, 982, 982)))
         );
         homePageLayout.setVerticalGroup(
             homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(homePageLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel28)
                             .addComponent(jLabel33))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel34)
-                        .addGap(60, 60, 60)
+                        .addComponent(jLabel34))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
                         .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel29)
-                            .addComponent(jLabel30))
-                        .addGap(26, 26, 26)
-                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(homePageLayout.createSequentialGroup()
-                                .addComponent(jLabel31)
-                                .addGap(301, 301, 301)
-                                .addComponent(jLabel32))
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(254, Short.MAX_VALUE))
+                            .addComponent(jLabel44)
+                            .addComponent(jLabel43)
+                            .addComponent(jLabel46))))
+                .addGap(18, 18, 18)
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addComponent(jLabel31)
+                .addGap(301, 301, 301)
+                .addComponent(jLabel32)
+                .addContainerGap())
             .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(homePageLayout.createSequentialGroup()
-                    .addGap(251, 251, 251)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(250, Short.MAX_VALUE)))
+                    .addGap(158, 158, 158)
+                    .addComponent(jLabel45)
+                    .addContainerGap(703, Short.MAX_VALUE)))
         );
 
         nbaStats.addTab("Home Page", homePage);
@@ -415,7 +459,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(apg, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(bpg)
                             .addComponent(spg))
-                        .addContainerGap(296, Short.MAX_VALUE))
+                        .addContainerGap(297, Short.MAX_VALUE))
                     .addGroup(seasonStatsLayout.createSequentialGroup()
                         .addGroup(seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, seasonStatsLayout.createSequentialGroup()
@@ -426,7 +470,7 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(ppgName, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(542, Short.MAX_VALUE))))
+                        .addContainerGap(543, Short.MAX_VALUE))))
         );
         seasonStatsLayout.setVerticalGroup(
             seasonStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,7 +523,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(spgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(490, Short.MAX_VALUE))
+                .addContainerGap(583, Short.MAX_VALUE))
         );
 
         nbaStats.addTab("Season Stat Leaders", seasonStats);
@@ -604,7 +648,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(allTimeSPGName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(allTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(allTimeBPG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                            .addComponent(allTimeBPG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                             .addComponent(allTimeAPG)
                             .addComponent(allTimePPG)
                             .addComponent(allTimeRPG)
@@ -667,7 +711,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jLabel23)
                         .addComponent(allTimeSPGName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(allTimeSPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(518, Short.MAX_VALUE))
+                .addContainerGap(611, Short.MAX_VALUE))
         );
 
         nbaStats.addTab("All Time Leaders", allTime);
@@ -741,7 +785,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(playerSearchButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
         nbaStats.addTab("Player Stats", playerStats);
@@ -797,40 +841,139 @@ public class MainWindow extends javax.swing.JFrame {
         jTextArea1.setText("This table tells you the percent chance a team has if they are \nranked within these values.");
         jScrollPane4.setViewportView(jTextArea1);
 
+        jLabel35.setText("Please input your weightage that you want to give for each category");
+
+        pointsPrediction.setText("0.4");
+        pointsPrediction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pointsPredictionActionPerformed(evt);
+            }
+        });
+
+        assistsPrediction.setText("0.15");
+
+        reboundsPrediction.setText("0.15");
+        reboundsPrediction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reboundsPredictionActionPerformed(evt);
+            }
+        });
+
+        blocksPrediction.setText("0.15");
+
+        stealsPrediction.setText("0.15");
+
+        jLabel36.setText("Points");
+
+        jLabel38.setText("Assists");
+
+        jLabel39.setText("Rebounds");
+
+        jLabel40.setText("Blocks");
+
+        jLabel41.setText("Steals");
+
+        predictionButton.setText("Run Prediction");
+        predictionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                predictionButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout predictionLayout = new javax.swing.GroupLayout(prediction);
         prediction.setLayout(predictionLayout);
         predictionLayout.setHorizontalGroup(
             predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(predictionLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(predictionLayout.createSequentialGroup()
-                        .addComponent(jLabel26)
-                        .addGap(18, 18, 18)
-                        .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(89, 89, 89)
-                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4))
+                        .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(predictionLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(predictionLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(93, 93, 93)
+                        .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4)))
+                    .addGroup(predictionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(predictionLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel36)
+                                    .addComponent(pointsPrediction, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(40, 40, 40)
+                                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(predictionLayout.createSequentialGroup()
+                                        .addComponent(jLabel38)
+                                        .addGap(61, 61, 61))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, predictionLayout.createSequentialGroup()
+                                        .addComponent(assistsPrediction, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(46, 46, 46)))
+                                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(reboundsPrediction))
+                                .addGap(77, 77, 77)
+                                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel40)
+                                    .addComponent(blocksPrediction, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(59, 59, 59)
+                                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(predictionLayout.createSequentialGroup()
+                                        .addComponent(stealsPrediction, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(105, 105, 105)
+                                        .addComponent(predictionButton))
+                                    .addComponent(jLabel41))))))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
         predictionLayout.setVerticalGroup(
             predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(predictionLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addComponent(jLabel35)
+                .addGap(25, 25, 25)
+                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(predictionLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
+                        .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(predictionLayout.createSequentialGroup()
+                                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel39)
+                                    .addComponent(jLabel40)
+                                    .addComponent(jLabel41))
+                                .addGap(8, 8, 8))
+                            .addGroup(predictionLayout.createSequentialGroup()
+                                .addComponent(jLabel36)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel26)
-                            .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(blocksPrediction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(predictionButton)
+                            .addComponent(stealsPrediction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pointsPrediction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(predictionLayout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addGap(9, 9, 9)
+                        .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(reboundsPrediction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(assistsPrediction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(predictionLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(375, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(predictionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(avgPredictionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(391, Short.MAX_VALUE))
         );
 
         nbaStats.addTab("Prediction", prediction);
@@ -922,6 +1065,41 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playerSearchButtonActionPerformed
 
+    private void pointsPredictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pointsPredictionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pointsPredictionActionPerformed
+
+    private void reboundsPredictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reboundsPredictionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reboundsPredictionActionPerformed
+
+    private void predictionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_predictionButtonActionPerformed
+        // TODO add your handling code here:
+        double[] predictionWeights = new double[5];
+        double total = 0;
+        predictionWeights[0] = Double.parseDouble(pointsPrediction.getText());
+        predictionWeights[1] = Double.parseDouble(assistsPrediction.getText());
+        predictionWeights[2] = Double.parseDouble(reboundsPrediction.getText());
+        predictionWeights[3] = Double.parseDouble(blocksPrediction.getText());
+        predictionWeights[4] = Double.parseDouble(stealsPrediction.getText());
+        // System.out.println(predictionWeights[0] + " " + predictionWeights[1]);
+        for(double x : predictionWeights){
+            total += x;
+        }
+        if(total != 1.0){
+            JOptionPane.showMessageDialog(this, "ERROR: Please make sure that the weight totals add up to 1");
+            return;
+        }
+        for(TeamByYear x : playerData.allTeamsByYear){
+            x.setWeightedAverage(predictionWeights);
+        }
+        playerData.sortNBAYearsData();
+        loadPredictionTable();
+        loadRangePredictionTable();
+        
+        
+    }//GEN-LAST:event_predictionButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -983,7 +1161,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> allTimeTeams;
     private javax.swing.JTextField apg;
     private javax.swing.JTextField apgName;
+    private javax.swing.JTextField assistsPrediction;
     private javax.swing.JTextField avgPredictionField;
+    private javax.swing.JTextField blocksPrediction;
     private javax.swing.JTextField bpg;
     private javax.swing.JTextField bpgName;
     private javax.swing.JPanel homePage;
@@ -1006,17 +1186,24 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1030,19 +1217,24 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTabbedPane nbaStats;
     private javax.swing.JButton playerSearchButton;
     private javax.swing.JPanel playerStats;
     private javax.swing.JTable playerStatsTable;
+    private javax.swing.JTextField pointsPrediction;
     private javax.swing.JTextField ppg;
     private javax.swing.JTextField ppgName;
     private javax.swing.JPanel prediction;
+    private javax.swing.JButton predictionButton;
     private javax.swing.JTable predictionTable;
     private javax.swing.JTable rangePredictionTable;
+    private javax.swing.JTextField reboundsPrediction;
     private javax.swing.JTextField rpg;
     private javax.swing.JTextField rpgName;
     private javax.swing.JTextField searchPlayerField;
@@ -1050,6 +1242,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> seasonYears;
     private javax.swing.JTextField spg;
     private javax.swing.JTextField spgName;
+    private javax.swing.JTextField stealsPrediction;
     private javax.swing.JComboBox<String> teamNames;
     private javax.swing.JTextField totalAssist;
     private javax.swing.JTextField totalAssistName;

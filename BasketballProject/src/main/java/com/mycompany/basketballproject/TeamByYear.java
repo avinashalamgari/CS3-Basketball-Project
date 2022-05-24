@@ -423,6 +423,12 @@ public class TeamByYear {
         this.weightedAverage =  Math.round(tempAvg * 100.0) / 100.0;
     }
     
+    public void setWeightedAverage(double[] weightedAverages){
+        double tempAvg = 0;
+        tempAvg = (double) ((weightedAverages[0] * this.getTotalTeamPoints() + weightedAverages[1] * this.getTotalTeamAssists() + weightedAverages[2] * this.getTotalTeamRebounds() + weightedAverages[3] * this.getTotalTeamBlocks() + weightedAverages[4] * this.getTotalTeamSteals()) / this.totalGamesPlayed);
+        this.weightedAverage =  Math.round(tempAvg * 100.0) / 100.0;
+    }
+    
     
     
 }
